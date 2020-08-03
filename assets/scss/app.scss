@@ -1,0 +1,64 @@
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@300;700&display=swap');
+
+// FONTS FRONT - OFFICE
+
+$font-body: Lato, serif;
+$font-title: Lalezar, serif;
+
+$path-to-picture: '../../public/pictures/' !default;
+// COLORS
+
+$dark-blue: #25283dff;
+$heavy-blue: #0d2c54ff;
+$electric-blue: #3685b5ff;
+$pink-smoke: #98838fff;
+$white-smoke: #f7f7ffff;
+
+$height-navbar: 65px;
+// GENERAL
+
+* {
+  font-size: calc(12px + (16 - 12) * (( 100vw - 300px) / (1600 - 300)));
+}
+
+p, li, a, span, input, button, td, th {
+  font-family: $font-body;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-title;
+}
+
+// NAVBAR
+
+.navbar {
+  .navbar-brand {
+    font-family: $font-title;
+    color: #303030;
+  }
+  .navbar-collapse {
+    .navbar-nav {
+      .nav-item{
+        li {
+          a {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+// HOMPAGE
+
+.header {
+  .header-picture {
+      .container {
+        .title-header {
+        }
+      }
+    ;
+  }
+}

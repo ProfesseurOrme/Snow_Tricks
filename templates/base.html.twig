@@ -2,11 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Le site de tous les amoureux de snowboard : Snow Tricks !" />
+        <link rel="stylesheet" href="{{ asset('/scss/material-kit.scss') }}">
+        <title>{% block title %}{% endblock %}</title>
+        {{ encore_entry_link_tags('app') }}
+
     </head>
-    <body>
+    <body class="login-page sidebar-collapse">
+        {{ include('assets/navbar.html.twig') }}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {{ include('assets/footer.html.twig')  }}
+        <script src="{{ asset('/js/core/jquery.min.js') }}"></script>
+        <script src="{{ asset('/js/core/popper.min.js') }}"></script>
+        <script src="{{ asset('/js/core/bootstrap-material-design.min.js') }}"></script>
+        <script src="{{ asset('/js/material-kit.js') }}"></script>
+        {{ encore_entry_script_tags('app') }}
     </body>
 </html>
