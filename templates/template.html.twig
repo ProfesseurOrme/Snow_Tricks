@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'assets/meta_date.html.twig' %}
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        {% include "assets/navbar.html.twig" %}
+        {% block body %}{% endblock %}
+        {% include "assets/footer.html.twig" %}
+        {% include 'assets/scripts.html.twig' %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

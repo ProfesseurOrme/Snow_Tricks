@@ -17,6 +17,78 @@
         <source>Sign in</source>
         <target>Se Connecter</target>
       </trans-unit>
+      <trans-unit id="WIN0NK9" resname="Home_Title_Description">
+        <source>Home_Title_Description</source>
+        <target>Bienvenue sur le site communautaire des fous de snowboard.</target>
+      </trans-unit>
+      <trans-unit id="gE9smHB" resname="Footer_Description">
+        <source>Footer_Description</source>
+        <target>Projet 6 OpenClassrooms - SnowTricks</target>
+      </trans-unit>
+      <trans-unit id="4MsqffC" resname="Meta_Title_Home">
+        <source>Meta_Title_Home</source>
+        <target>SnowTricks - Site Communautaire des fous de snowboard</target>
+      </trans-unit>
+      <trans-unit id="vVOWenZ" resname="Meta_Title_Trick_Edit">
+        <source>Meta_Title_Trick_Edit</source>
+        <target>Édition d'une figure - Création</target>
+      </trans-unit>
+      <trans-unit id="h5QW.VI" resname="Form_Label_Name">
+        <source>Form_Label_Name</source>
+        <target>Nom de la figure</target>
+      </trans-unit>
+      <trans-unit id=".gaQVCF" resname="Form_Trick_Name">
+        <source>Form_Trick_Name</source>
+        <target>Entrez un nom de figure ici.</target>
+      </trans-unit>
+      <trans-unit id="1Y0xPW0" resname="Trick_Title_Description">
+        <source>Trick_Title_Description</source>
+        <target>Ici, vous pouvez éditer une figure et la soumettre à la communauté</target>
+      </trans-unit>
+      <trans-unit id="z95WoaU" resname="Trick_Title_Form">
+        <source>Trick_Title_Form</source>
+        <target>Éditez votre figure</target>
+      </trans-unit>
+      <trans-unit id="JS3xgJs" resname="Form_Label_For_Name">
+        <source>Form_Label_For_Name</source>
+        <target>name</target>
+      </trans-unit>
+      <trans-unit id="_rsPocC" resname="Form_Label_Description">
+        <source>Form_Label_Description</source>
+        <target>Entrez une description</target>
+      </trans-unit>
+      <trans-unit id="IV.wq0w" resname="Form_Label_Category">
+        <source>Form_Label_Category</source>
+        <target>Choisissez la catégorie de la figure</target>
+      </trans-unit>
+      <trans-unit id="Y7o.IY2" resname="Form_Label_For_Descritpion">
+        <source>Form_Label_For_Descritpion</source>
+        <target>description</target>
+      </trans-unit>
+      <trans-unit id="Rdpvroe" resname="Form_Label_For_Category">
+        <source>Form_Label_For_Category</source>
+        <target>category</target>
+      </trans-unit>
+      <trans-unit id="CvNJkvq" resname="Form_Trick_Submit">
+        <source>Form_Trick_Submit</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+      <trans-unit id="dFHRK6B" resname="Form_Label_For_Picture">
+        <source>Form_Label_For_Picture</source>
+        <target>image</target>
+      </trans-unit>
+      <trans-unit id="nzeD3re" resname="Form_Label_Picture">
+        <source>Form_Label_Picture</source>
+        <target>Ajoutez des images (minimum 1)</target>
+      </trans-unit>
+      <trans-unit id="qUBvhRm" resname="Form_Label_For_Video">
+        <source>Form_Label_For_Video</source>
+        <target>video</target>
+      </trans-unit>
+      <trans-unit id="QqwZ2ks" resname="Form_Label_Video">
+        <source>Form_Label_Video</source>
+        <target>Ajoutez des vidéos (minimum 1)</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
