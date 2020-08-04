@@ -57,12 +57,16 @@
         <source>Form_Label_Description</source>
         <target>Entrez une description</target>
       </trans-unit>
+      <trans-unit id="ya2ojl9" resname="Form_Trick_Category_Placeholder">
+        <source>Form_Trick_Category_Placeholder</source>
+        <target>Choisissez une famille</target>
+      </trans-unit>
       <trans-unit id="IV.wq0w" resname="Form_Label_Category">
         <source>Form_Label_Category</source>
         <target>Choisissez la catégorie de la figure</target>
       </trans-unit>
-      <trans-unit id="Y7o.IY2" resname="Form_Label_For_Descritpion">
-        <source>Form_Label_For_Descritpion</source>
+      <trans-unit id="Z5Wubas" resname="Form_Label_For_Description">
+        <source>Form_Label_For_Description</source>
         <target>description</target>
       </trans-unit>
       <trans-unit id="Rdpvroe" resname="Form_Label_For_Category">
@@ -95,23 +99,47 @@
       </trans-unit>
       <trans-unit id="FS_zAaF" resname="Form_Label_Main_Picture">
         <source>Form_Label_Main_Picture</source>
-        <target>Ajouter une image d'illustration</target>
+        <target>Ajouter une image d'illustration (jpeg/png, haute qualité)</target>
       </trans-unit>
       <trans-unit id="n.ECL6G" resname="Form_Button_Add_Picture">
         <source>Form_Button_Add_Picture</source>
         <target>Ajouter une image</target>
       </trans-unit>
+      <trans-unit id="w1Mn6WI" resname="Form_Button_Add_Pictures">
+        <source>Form_Button_Add_Pictures</source>
+        <target>Ajouter des images</target>
+      </trans-unit>
       <trans-unit id="TqHnplE" resname="Form_Button_Add_Video">
         <source>Form_Button_Add_Video</source>
         <target>Ajouter une vidéo</target>
       </trans-unit>
-      <trans-unit id="Form_Trick_Description">
-       <source>Form_Trick_Description</source>
-       <target>Ajoutez une description à la figure</target>
+      <trans-unit id="LEeTDpw" resname="Form_Trick_Description">
+        <source>Form_Trick_Description</source>
+        <target>Ajoutez une description à la figure</target>
       </trans-unit>
-      <trans-unit id="Form_Trick_Video">
-       <source>Form_Trick_Video</source>
-       <target>Entrez le lien de la vidéo</target>
+      <trans-unit id="0FXPULU" resname="Form_Trick_Video">
+        <source>Form_Trick_Video</source>
+        <target>Entrez le lien de la vidéo</target>
+      </trans-unit>
+      <trans-unit id="z9wFM42" resname="Trick_Subtitle_Form">
+        <source>Trick_Subtitle_Form</source>
+        <target>Entrez et sélectionnez les informations concernant la figure.</target>
+      </trans-unit>
+      <trans-unit id="QGltzm_" resname="Trick_Title_Media">
+        <source>Trick_Title_Media</source>
+        <target>Sélectionnez les médias</target>
+      </trans-unit>
+      <trans-unit id="HxTxndB" resname="Trick_Subtitle_Media">
+        <source>Trick_Subtitle_Media</source>
+        <target>Choisissez des photos et des vidéos sur la figure que vous souhaitez soumettre</target>
+      </trans-unit>
+      <trans-unit id="st03zsv" resname="Form_Label_For_Pictures">
+        <source>Form_Label_For_Pictures</source>
+        <target>images</target>
+      </trans-unit>
+      <trans-unit id="CkJ_6Z3" resname="Form_Label_Main_Pictures">
+        <source>Form_Label_Main_Pictures</source>
+        <target>Ajoutez (au moins) une ou plusieurs images d'illustrations</target>
       </trans-unit>
     </body>
   </file>
