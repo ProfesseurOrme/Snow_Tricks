@@ -93,6 +93,30 @@
         <source>Form_Label_Video</source>
         <target>Add some videos (1 minimum)</target>
       </trans-unit>
+      <trans-unit id="ixhtg3J" resname="Form_Label_For_Main_Picture">
+        <source>Form_Label_For_Main_Picture</source>
+        <target>picture</target>
+      </trans-unit>
+      <trans-unit id="FS_zAaF" resname="Form_Label_Main_Picture">
+        <source>Form_Label_Main_Picture</source>
+        <target>Add an illustration picture</target>
+      </trans-unit>
+      <trans-unit id="n.ECL6G" resname="Form_Button_Add_Picture">
+        <source>Form_Button_Add_Picture</source>
+        <target>Add a picture</target>
+      </trans-unit>
+      <trans-unit id="TqHnplE" resname="Form_Button_Add_Video">
+        <source>Form_Button_Add_Video</source>
+        <target>Add a video embed</target>
+      </trans-unit>
+      <trans-unit id="Form_Trick_Description">
+        <source>Form_Trick_Description</source>
+        <target>Add a description for your trick</target>
+      </trans-unit>
+      <trans-unit id="Form_Trick_Video">
+       <source>Form_Trick_Video</source>
+       <target>Add video embed</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

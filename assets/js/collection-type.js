@@ -1,49 +1,55 @@
-var $collectionHolder;
+let collectionHolderPicture, collectionHolderVideo;
 
-console.log('pouet');
+let addTagButtonVideo = $('.add_tag_link_video');
 
-// setup an "add a tag" link
-var $addTagButton = $('<button type="button" class="add_tag_link">Add a tag</button>');
-var $newLinkLi = $('<li></li>').append($addTagButton);
+//et newLinkPicture = $('<div class="add-picture-block"></div>');
+let newLinkVideo = $('<div class="add-video-block"></div>');
 
-jQuery(document).ready(function() {
-    // Get the ul that holds the collection of tags
-    $collectionHolder = $('div.add-input-picture');
+$(document).ready(function() {
+    //collectionHolderPicture = $('div.add-picture');
+    collectionHolderVideo = $('div.add-video');
 
-    // add the "add a tag" anchor and li to the tags ul
-    $collectionHolder.append($newLinkLi);
+    //collectionHolderPicture.append(newLinkPicture);
+    collectionHolderVideo.append(newLinkVideo);
 
-    // count the current form inputs we have (e.g. 2), use that as the new
-    // index when inserting a new item (e.g. 2)
-    $collectionHolder.data('index', $collectionHolder.find('input').length);
+    //collectionHolderPicture.data('index', collectionHolderPicture.find('input').length);
+    collectionHolderVideo.data('index', collectionHolderVideo.find('input').length);
 
-    $addTagButton.on('click', function(e) {
-        // add a new tag form (see next code block)
-        addTagForm($collectionHolder, $newLinkLi);
+    /*if (collectionHolderPicture.find(':input').length < 1) {
+        addTagForm(collectionHolderPicture,newLinkPicture);
+    } */
+
+    if(collectionHolderVideo.find(':input').length < 1){
+        addTagForm(collectionHolderVideo,newLinkVideo);
+    }
+
+    /*addTagButtonPicture.on('click', function() {
+
+        addTagForm(collectionHolderPicture, newLinkPicture);
+    });*/
+
+    addTagButtonVideo.on('click', function() {
+
+        addTagForm(collectionHolderVideo, newLinkVideo);
     });
+
 });
 
-function addTagForm($collectionHolder, $newLinkLi) {
-    // Get the data-prototype explained earlier
-    var prototype = $collectionHolder.data('prototype');
+function addTagForm(collectionHolder, newLink) {
 
-    // get the new index
-    var index = $collectionHolder.data('index');
+    let prototype = collectionHolder.data('prototype');
+    let index = collectionHolder.data('index');
+    let newForm = prototype;
 
-    var newForm = prototype;
-    // You need this only if you didn't set 'label' => false in your tags field in TaskType
-    // Replace '__name__label__' in the prototype's HTML to
-    // instead be a number based on how many items we have
-    // newForm = newForm.replace(/__name__label__/g, index);
-
-    // Replace '__name__' in the prototype's HTML to
-    // instead be a number based on how many items we have
     newForm = newForm.replace(/__name__/g, index);
+    collectionHolder.data('index', index + 1);
+    /*let newFormLine;
+    if(newLink.hasClass('add-picture-block')) {
+        newFormLine = $('<div class="add-picture-block"></div>').append(newForm);
+    } else {
+        newFormLine = $('<div class="add-video-block"></div>').append(newForm);
+    } */
+    let newFormLine = $('<div class="add-video-block"></div>').append(newForm);
 
-    // increase the index with one for the next item
-    $collectionHolder.data('index', index + 1);
-
-    // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
+    newLink.before(newFormLine);
 }
