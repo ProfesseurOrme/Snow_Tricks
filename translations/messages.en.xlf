@@ -55,7 +55,7 @@
       </trans-unit>
       <trans-unit id="z9wFM42" resname="Trick_Subtitle_Form">
         <source>Trick_Subtitle_Form</source>
-        <target>Enter and select the information about the trick.</target>
+        <target>Enter and select the information about the trick (All fields are required !).</target>
       </trans-unit>
       <trans-unit id="QGltzm_" resname="Trick_Title_Media">
         <source>Trick_Title_Media</source>
@@ -140,6 +140,14 @@
       <trans-unit id="CkJ_6Z3" resname="Form_Label_Main_Pictures">
         <source>Form_Label_Main_Pictures</source>
         <target>Add (at least) one or more pictures of the trick</target>
+      </trans-unit>
+      <trans-unit id="uZT0y93" resname="Meta_Title_Detail_Trick">
+        <source>Meta_Title_Detail_Trick</source>
+        <target>SnowTricks - Detail : name</target>
+      </trans-unit>
+      <trans-unit id="uJh9eOw" resname="Trick_Date_Created">
+        <source>Trick_Date_Created</source>
+        <target>Created at</target>
       </trans-unit>
     </body>
   </file>

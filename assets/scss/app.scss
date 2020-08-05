@@ -22,10 +22,9 @@ $height-navbar: 65px;
 * {
   font-size: calc(12px + (16 - 12) * (( 100vw - 300px) / (1600 - 300)));
 }
-
 p, li, a, span, input, button, td, th {
   font-family: $font-body;
-
+  font-size: calc(12px + (16 - 12) * (( 100vw - 300px) / (1600 - 300)));
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -60,13 +59,34 @@ h1, h2, h3, h4, h5, h6 {
 .section {
   padding: 25px 0;
 }
+
 .footer {
   padding: 20px 0;
 }
 // TRICK
 
+.main {
+  .page-header {
+    height: 50vh;
+  }
+}
 .alt-main {
   margin: -250px 30px 0px;
+}
+
+.main-describe {
+  margin: -250px 8% 0px;
+}
+
+div.section-header-trick {
+  padding: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+//CAROUSEL
+
+.carousel-inner {
+  max-height: 400px;
 }
 
 // FORM & BUTTON

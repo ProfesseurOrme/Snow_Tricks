@@ -123,7 +123,8 @@
       </trans-unit>
       <trans-unit id="z9wFM42" resname="Trick_Subtitle_Form">
         <source>Trick_Subtitle_Form</source>
-        <target>Entrez et sélectionnez les informations concernant la figure.</target>
+        <target>Entrez et sélectionnez les informations concernant la figure (Attention, tous les champs sont
+        obligatoires !).</target>
       </trans-unit>
       <trans-unit id="QGltzm_" resname="Trick_Title_Media">
         <source>Trick_Title_Media</source>
@@ -140,6 +141,14 @@
       <trans-unit id="CkJ_6Z3" resname="Form_Label_Main_Pictures">
         <source>Form_Label_Main_Pictures</source>
         <target>Ajoutez (au moins) une ou plusieurs images d'illustrations</target>
+      </trans-unit>
+      <trans-unit id="uZT0y93" resname="Meta_Title_Detail_Trick">
+        <source>Meta_Title_Detail_Trick</source>
+        <target>SnowTricks - Détail : name</target>
+      </trans-unit>
+      <trans-unit id="uJh9eOw" resname="Trick_Date_Created">
+        <source>Trick_Date_Created</source>
+        <target>Créé le </target>
       </trans-unit>
     </body>
   </file>

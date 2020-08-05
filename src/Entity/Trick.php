@@ -6,6 +6,7 @@ use App\Repository\TrickRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=TrickRepository::class)
@@ -45,12 +46,12 @@ class Trick
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=Video::class, mappedBy="trick")
+     * @ORM\OneToMany(targetEntity=Video::class, mappedBy="trick", cascade={"persist"})
      */
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="trick")
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="trick", cascade={"persist"})
      */
     private $pictures;
 
@@ -58,6 +59,12 @@ class Trick
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="trick")
      */
     private $comments;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -222,5 +229,10 @@ class Trick
         }
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
     }
 }

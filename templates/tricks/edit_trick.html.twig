@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<section class="page-header header-filter" style="background-image: url({{ asset('pictures/background.jpg') }})">
+<section class="page-header header-filter" style="background-image: url({{ asset('pictures/assets/background.jpg') }})">
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">
@@ -17,13 +17,14 @@
     </div>
 </section>
 <section class="main main-raised alt-main">
+    {{ form_start(form) }}
     <div class="container">
         <div class="section text-center">
             <h3>{{ 'Trick_Title_Form'|trans }}</h3>
             <h5>{{ 'Trick_Subtitle_Form'|trans }}</h5>
         </div>
         <div class="col-md-12">
-            {{ form_start(form) }}
+
             <div class="form-group">
                 <label for="{{ 'Form_Label_For_Name'|trans }}">{{ 'Form_Label_Name'|trans }} : </label>
                 {{ form_widget(form.name, {'attr': {'placeholder': 'Form_Trick_Name', 'class': 'form-control' }}) }}
@@ -49,7 +50,6 @@
                 <label class="bmd-label-static" for="{{ 'Form_Label_For_Category'|trans }}">{{
                     'Form_Label_Category'|trans }} : </label>
                 {% set categoryPlaceholder = '-- ' ~ 'Form_Trick_Category_Placeholder'|trans ~ ' --' %}
-
                 {{ form_widget(form.category, {'attr' : {'class' : 'form-control'}, 'placeholder' :
                     categoryPlaceholder }) }}
             </div>
@@ -75,7 +75,7 @@
                 <div class="add-video" data-prototype="{% apply escape %}{{ form_widget(form.videos.vars.prototype.embed, {'attr' : {'placeholder' : 'Form_Trick_Video', 'class' : 'form-control'}}) }}{% endapply %}">
                 {% for formVideo in form.videos %}
                     <div class="add-video-block">
-                        {{ form_widget(formVideo.embed, {'attr' : {'placeholder' : 'Form_Trick_Video'}}) }}
+                        {{ form_widget(formVideo.embed, {'attr' : {'placeholder' : 'Form_Trick_Video', 'class' : 'form-control'}}) }}
                     </div>
                 {% endfor %}
                 </div>
@@ -86,10 +86,10 @@
             </div>
             <div class="footer text-center">
                 <input type="submit" class="btn btn-dark-blue btn-wd btn-lg" value="{{ 'Form_Trick_Submit'|trans }}">
-                {{ form_end(form) }}
             </div>
         </div>
     </div>
+    {{ form_end(form) }}
 </section>
 
 {% endblock %}
