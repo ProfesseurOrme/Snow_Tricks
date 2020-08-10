@@ -17,6 +17,18 @@
         <source>Sign in</source>
         <target>Se Connecter</target>
       </trans-unit>
+      <trans-unit id="XiuOllA" resname="Sign up">
+        <source>Sign up</source>
+        <target>S'enregistrer</target>
+      </trans-unit>
+      <trans-unit id="SWFhRVF" resname="Log out">
+        <source>Log out</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="yvz4QTG" resname="Tricks_Create">
+        <source>Tricks_Create</source>
+        <target>Créer une figure</target>
+      </trans-unit>
       <trans-unit id="WIN0NK9" resname="Home_Title_Description">
         <source>Home_Title_Description</source>
         <target>Bienvenue sur le site communautaire des fous de snowboard.</target>
@@ -136,7 +148,7 @@
       </trans-unit>
       <trans-unit id="st03zsv" resname="Form_Label_For_Pictures">
         <source>Form_Label_For_Pictures</source>
-        <target>images</target>
+        <target>pictures</target>
       </trans-unit>
       <trans-unit id="CkJ_6Z3" resname="Form_Label_Main_Pictures">
         <source>Form_Label_Main_Pictures</source>
@@ -152,7 +164,7 @@
       </trans-unit>
       <trans-unit id="XhEwzXX" resname="Trick_Comment_Label_For">
         <source>Trick_Comment_Label_For</source>
-        <target>commentaire</target>
+        <target>comment</target>
       </trans-unit>
       <trans-unit id="hKLDaCU" resname="Trick_Comment_Label">
         <source>Trick_Comment_Label</source>
@@ -192,7 +204,7 @@
       </trans-unit>
       <trans-unit id="feT_aSv" resname="LogIn_Password_Label_For">
         <source>LogIn_Password_Label_For</source>
-        <target>mot de passe</target>
+        <target>password</target>
       </trans-unit>
       <trans-unit id="t9CRMm4" resname="LogIn_Password_Label">
         <source>LogIn_Password_Label</source>
@@ -213,6 +225,70 @@
       <trans-unit id="EbTMkHB" resname="LogIn_Title_Form">
         <source>LogIn_Title_Form</source>
         <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="j81jQGD" resname="SignUp_Title_Form">
+        <source>SignUp_Title_Form</source>
+        <target>Création du compte</target>
+      </trans-unit>
+      <trans-unit id="ooCIs0N" resname="SignUp_Username_Label_For">
+        <source>SignUp_Username_Label_For</source>
+        <target>username</target>
+      </trans-unit>
+      <trans-unit id="JVw039M" resname="SignUp_Username_Label">
+        <source>SignUp_Username_Label</source>
+        <target>Pseudo</target>
+      </trans-unit>
+      <trans-unit id="72tDUej" resname="SignUp_Email_Label_For">
+        <source>SignUp_Email_Label_For</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="sRgauEC" resname="SignUp_Email_Label">
+        <source>SignUp_Email_Label</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="PMTdD7e" resname="SignUp_Password_Label_For">
+        <source>SignUp_Password_Label_For</source>
+        <target>mot de passe</target>
+      </trans-unit>
+      <trans-unit id="FJJSlwT" resname="SignUp_Password_Label">
+        <source>SignUp_Password_Label</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="SdHaFfZ" resname="SignUp_Button_Create">
+        <source>SignUp_Button_Create</source>
+        <target>Créer le compte</target>
+      </trans-unit>
+      <trans-unit id="g8wZLk9" resname="Reset_Title_Form">
+        <source>Reset_Title_Form</source>
+        <target>Réinitialisez votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="Hu56keM" resname="Reset_Email_Label_For">
+        <source>Reset_Email_Label_For</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="7lxixPt" resname="Reset_Email_Label">
+        <source>Reset_Email_Label</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="lYeXZBb" resname="Reset_Password_Label_For">
+        <source>Reset_Password_Label_For</source>
+        <target>password</target>
+      </trans-unit>
+      <trans-unit id="5iIqJm." resname="Reset_Password_Label">
+        <source>Reset_Password_Label</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="bcnrow7" resname="Reset_Connection_Button">
+        <source>Reset_Connection_Button</source>
+        <target>Réinitialiser</target>
+      </trans-unit>
+      <trans-unit id="xI4r58U" resname="Reset_Password">
+        <source>Reset_Password</source>
+        <target>Réinitialiser votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="jlN3N2c" resname="Reset_Password_Error_Email">
+        <source>Reset_Password_Error_Email</source>
+        <target>La valeur du champ email ne correspond pas à l'email de votre compte. Veuillez réessayer !</target>
       </trans-unit>
     </body>
   </file>

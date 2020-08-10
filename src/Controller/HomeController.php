@@ -11,9 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class HomeController extends AbstractController
 {
-    /**
-     * @Route("", name="home")
-     */
+  /**
+   * @Route("", name="home")
+   * @param TrickRepository $trickRepository
+   * @return \Symfony\Component\HttpFoundation\Response
+   */
     public function index(TrickRepository $trickRepository)
     {
 

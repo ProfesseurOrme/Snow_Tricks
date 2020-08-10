@@ -17,6 +17,18 @@
         <source>Sign in</source>
         <target>Sign in</target>
       </trans-unit>
+      <trans-unit id="XiuOllA" resname="Sign up">
+        <source>Sign up</source>
+        <target>Sign up</target>
+      </trans-unit>
+      <trans-unit id="SWFhRVF" resname="Log out">
+        <source>Log out</source>
+        <target>Log out</target>
+      </trans-unit>
+      <trans-unit id="yvz4QTG" resname="Tricks_Create">
+        <source>Tricks_Create</source>
+        <target>Create a trick</target>
+      </trans-unit>
       <trans-unit id="WIN0NK9" resname="Home_Title_Description">
         <source>Home_Title_Description</source>
         <target>Welcome to the community site for snowboards enthusiasts</target>
@@ -213,6 +225,70 @@
       <trans-unit id="EbTMkHB" resname="LogIn_Title_Form">
         <source>LogIn_Title_Form</source>
         <target>Login</target>
+      </trans-unit>
+      <trans-unit id="j81jQGD" resname="SignUp_Title_Form">
+        <source>SignUp_Title_Form</source>
+        <target>Registration</target>
+      </trans-unit>
+      <trans-unit id="ooCIs0N" resname="SignUp_Username_Label_For">
+        <source>SignUp_Username_Label_For</source>
+        <target>username</target>
+      </trans-unit>
+      <trans-unit id="JVw039M" resname="SignUp_Username_Label">
+        <source>SignUp_Username_Label</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="72tDUej" resname="SignUp_Email_Label_For">
+        <source>SignUp_Email_Label_For</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="sRgauEC" resname="SignUp_Email_Label">
+        <source>SignUp_Email_Label</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="PMTdD7e" resname="SignUp_Password_Label_For">
+        <source>SignUp_Password_Label_For</source>
+        <target>password</target>
+      </trans-unit>
+      <trans-unit id="FJJSlwT" resname="SignUp_Password_Label">
+        <source>SignUp_Password_Label</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="SdHaFfZ" resname="SignUp_Button_Create">
+        <source>SignUp_Button_Create</source>
+        <target>Create an account</target>
+      </trans-unit>
+      <trans-unit id="g8wZLk9" resname="Reset_Title_Form">
+        <source>Reset_Title_Form</source>
+        <target>Reset your password</target>
+      </trans-unit>
+      <trans-unit id="Hu56keM" resname="Reset_Email_Label_For">
+        <source>Reset_Email_Label_For</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="7lxixPt" resname="Reset_Email_Label">
+        <source>Reset_Email_Label</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="lYeXZBb" resname="Reset_Password_Label_For">
+        <source>Reset_Password_Label_For</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="5iIqJm." resname="Reset_Password_Label">
+        <source>Reset_Password_Label</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="bcnrow7" resname="Reset_Connection_Button">
+        <source>Reset_Connection_Button</source>
+        <target>Reset</target>
+      </trans-unit>
+      <trans-unit id="xI4r58U" resname="Reset_Password">
+        <source>Reset_Password</source>
+        <target>Reset Password</target>
+      </trans-unit>
+      <trans-unit id="jlN3N2c" resname="Reset_Password_Error_Email">
+        <source>Reset_Password_Error_Email</source>
+        <target>The value of the email field does not match your account email. Please, retry !</target>
       </trans-unit>
     </body>
   </file>
