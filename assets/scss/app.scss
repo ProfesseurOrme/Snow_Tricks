@@ -6,17 +6,27 @@
 
 $font-body: Lato, serif;
 $font-title: Lalezar, serif;
-
 $path-to-picture: '../../public/pictures/' !default;
+
 // COLORS
 
-$dark-blue: #25283dff;
-$heavy-blue: #0d2c54ff;
+$dark-blue: #4b6cb7;
+$heavy-blue: #182848;
 $electric-blue: #3685b5ff;
 $pink-smoke: #98838fff;
 $white-smoke: #f7f7ffff;
 
+// MISC
+
 $height-navbar: 65px;
+
+// BREAKPOINT
+
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+
 // GENERAL
 
 * {
@@ -35,6 +45,53 @@ h1, h2, h3, h4, h5, h6 {
   @include material-icons();
 }
 
+@mixin sm_min {
+  @media (min-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+@mixin sm_max {
+  @media (max-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+@mixin md_min {
+  @media (min-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+@mixin md_max {
+  @media (max-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+@mixin lg_min {
+  @media (min-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+@mixin lg_max {
+  @media (max-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+@mixin xl_min {
+  @media (min-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+@mixin xl_max {
+  @media (max-width: #{$screen-xl}) {
+    @content;
+  }
+}
 // NAVBAR
 
 .navbar {
@@ -65,11 +122,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 // TRICK
 
+.page-header-trick {
+  height: 50vh;
+  background: #4b6cb7;
+  background: -webkit-linear-gradient(to right, #182848, #4b6cb7);
+  background: linear-gradient(to right, #182848, #4b6cb7);
+
+}
+
 .main {
-  .page-header {
-    height: 50vh;
+  .section-header-trick {
+    height: 45vh;
   }
 }
+
+.badge {
+  font-size: .92rem;
+  background-color: $heavy-blue;
+}
+
 .alt-main {
   margin: -250px 30px 0px;
 }
@@ -83,12 +154,17 @@ div.section-header-trick {
   border-radius: 6px 6px 0 0;
 }
 
+hr {
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+}
 //CAROUSEL
 
-.carousel-inner {
-  max-height: 400px;
+.carousel {
+  @include md_max {
+    margin: 10px 0;
+  }
 }
-
 // FORM & BUTTON
 
 .form-group {
@@ -126,5 +202,4 @@ div.section-header-trick {
   color: #fff;
   background-color: $heavy-blue;
   border-color: $heavy-blue;
-  box-shadow: 0 2px 2px 0 rgb(29, 25, 88), 0 3px 1px -2px rgb(29, 25, 88), 0 1px 5px 0 rgb(29, 25, 88);
 }

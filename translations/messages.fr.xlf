@@ -150,6 +150,70 @@
         <source>Trick_Date_Created</source>
         <target>Créé le </target>
       </trans-unit>
+      <trans-unit id="XhEwzXX" resname="Trick_Comment_Label_For">
+        <source>Trick_Comment_Label_For</source>
+        <target>commentaire</target>
+      </trans-unit>
+      <trans-unit id="hKLDaCU" resname="Trick_Comment_Label">
+        <source>Trick_Comment_Label</source>
+        <target>Votre commentaire</target>
+      </trans-unit>
+      <trans-unit id="DI2Vt31" resname="Trick_Comment_Submit_Button">
+        <source>Trick_Comment_Submit_Button</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="JlVwfuq" resname="Trick_Comment_Placeholder">
+        <source>Trick_Comment_Placeholder</source>
+        <target>Écrivez votre commentaire ici</target>
+      </trans-unit>
+      <trans-unit id="IFqaWDD" resname="Trick_Comment_Empty_Message">
+        <source>Trick_Comment_Empty_Message</source>
+        <target>Aucun commentaire n'a été posté pour le moment. Connecte toi et arrangeons ça !</target>
+      </trans-unit>
+      <trans-unit id="1r.0TTa" resname="Trick_Medias_Title">
+        <source>Trick_Medias_Title</source>
+        <target>Galerie des médias</target>
+      </trans-unit>
+      <trans-unit id="vMJuOLg" resname="Trick_Medias_Descritpion">
+        <source>Trick_Medias_Descritpion</source>
+        <target>Une sélection d'images et de vidéos en relation avec la figure. Naviguez via le carousel et admirez !</target>
+      </trans-unit>
+      <trans-unit id="R4pNbG7" resname="Trick_Comment_Title">
+        <source>Trick_Comment_Title</source>
+        <target>Réagissez ! Laissez votre commentaire</target>
+      </trans-unit>
+      <trans-unit id="3sdwRMu" resname="LogIn_Username_Label_For">
+        <source>LogIn_Username_Label_For</source>
+        <target>pseudo</target>
+      </trans-unit>
+      <trans-unit id="NDPK6c7" resname="LogIn_Username_Label">
+        <source>LogIn_Username_Label</source>
+        <target>Pseudo</target>
+      </trans-unit>
+      <trans-unit id="feT_aSv" resname="LogIn_Password_Label_For">
+        <source>LogIn_Password_Label_For</source>
+        <target>mot de passe</target>
+      </trans-unit>
+      <trans-unit id="t9CRMm4" resname="LogIn_Password_Label">
+        <source>LogIn_Password_Label</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="D.R.bYD" resname="LogIn_Remember_me_Label">
+        <source>LogIn_Remember_me_Label</source>
+        <target>se souvenir de moi</target>
+      </trans-unit>
+      <trans-unit id="tRzbn5g" resname="LogIn_Remember_me_Checkbox">
+        <source>LogIn_Remember_me_Checkbox</source>
+        <target>Se souvenir de moi</target>
+      </trans-unit>
+      <trans-unit id="2pomgIH" resname="LogIn_Connection_Button">
+        <source>LogIn_Connection_Button</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="EbTMkHB" resname="LogIn_Title_Form">
+        <source>LogIn_Title_Form</source>
+        <target>Se connecter</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

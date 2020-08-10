@@ -1,0 +1,38 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<div class="page-header header-filter" style="background-image: url({{ asset('pictures/background.jpg') }})">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <form method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                            <h1 class="h3 mb-3 font-weight-normal">{{ 'LogIn_Title_Form'|trans }}</h1>
+                            <label for="{{ 'LogIn_Username_Label_For'|trans }}">{{ 'LogIn_Username_Label'|trans }}</label>
+                            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                            <label for="{{ 'LogIn_Password_Label_For'|trans }}">{{ 'LogIn_Password_Label'|trans }}</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                            <div class="checkbox mb-3">
+                                <label for="{{ 'LogIn_Remember_me_Label'|trans }}">
+                                    <input type="checkbox" name="_remember_me"> {{ 'LogIn_Remember_me_Checkbox'|trans }}
+                                </label>
+                            </div>
+                            <button class="btn btn-lg btn-dark-blue" type="submit">{{ 'LogIn_Connection_Button'|trans
+                                }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

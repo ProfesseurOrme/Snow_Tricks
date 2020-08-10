@@ -66,6 +66,11 @@ class Trick
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $modifiedDate;
+
     public function __construct()
     {
         $this->videos = new ArrayCollection();
@@ -234,5 +239,17 @@ class Trick
     public function getSlug(): ?string
     {
         return $this->slug;
+    }
+
+    public function getModifiedDate(): ?\DateTimeInterface
+    {
+        return $this->modifiedDate;
+    }
+
+    public function setModifiedDate(?\DateTimeInterface $modifiedDate): self
+    {
+        $this->modifiedDate = $modifiedDate;
+
+        return $this;
     }
 }

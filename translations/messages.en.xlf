@@ -149,6 +149,71 @@
         <source>Trick_Date_Created</source>
         <target>Created at</target>
       </trans-unit>
+      <trans-unit id="XhEwzXX" resname="Trick_Comment_Label_For">
+        <source>Trick_Comment_Label_For</source>
+        <target>comment</target>
+      </trans-unit>
+      <trans-unit id="hKLDaCU" resname="Trick_Comment_Label">
+        <source>Trick_Comment_Label</source>
+        <target>Votre commentaire</target>
+      </trans-unit>
+      <trans-unit id="DI2Vt31" resname="Trick_Comment_Submit_Button">
+        <source>Trick_Comment_Submit_Button</source>
+        <target>Send</target>
+      </trans-unit>
+      <trans-unit id="JlVwfuq" resname="Trick_Comment_Placeholder">
+        <source>Trick_Comment_Placeholder</source>
+        <target>Write your comment here</target>
+      </trans-unit>
+      <trans-unit id="IFqaWDD" resname="Trick_Comment_Empty_Message">
+        <source>Trick_Comment_Empty_Message</source>
+        <target>There is no comment available for now. Sign in and get let's fix this !</target>
+      </trans-unit>
+      <trans-unit id="1r.0TTa" resname="Trick_Medias_Title">
+        <source>Trick_Medias_Title</source>
+        <target>Media gallery</target>
+      </trans-unit>
+      <trans-unit id="vMJuOLg" resname="Trick_Medias_Descritpion">
+        <source>Trick_Medias_Descritpion</source>
+        <target>A selection of pictures and videos related to the trick. Navigate through the carousel
+          and see !</target>
+      </trans-unit>
+      <trans-unit id="R4pNbG7" resname="Trick_Comment_Title">
+        <source>Trick_Comment_Title</source>
+        <target>React ! Leave your comment</target>
+      </trans-unit>
+      <trans-unit id="3sdwRMu" resname="LogIn_Username_Label_For">
+        <source>LogIn_Username_Label_For</source>
+        <target>username</target>
+      </trans-unit>
+      <trans-unit id="NDPK6c7" resname="LogIn_Username_Label">
+        <source>LogIn_Username_Label</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="feT_aSv" resname="LogIn_Password_Label_For">
+        <source>LogIn_Password_Label_For</source>
+        <target>password</target>
+      </trans-unit>
+      <trans-unit id="t9CRMm4" resname="LogIn_Password_Label">
+        <source>LogIn_Password_Label</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="D.R.bYD" resname="LogIn_Remember_me_Label">
+        <source>LogIn_Remember_me_Label</source>
+        <target>remember me</target>
+      </trans-unit>
+      <trans-unit id="tRzbn5g" resname="LogIn_Remember_me_Checkbox">
+        <source>LogIn_Remember_me_Checkbox</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="2pomgIH" resname="LogIn_Connection_Button">
+        <source>LogIn_Connection_Button</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="EbTMkHB" resname="LogIn_Title_Form">
+        <source>LogIn_Title_Form</source>
+        <target>Login</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
