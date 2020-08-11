@@ -71,7 +71,7 @@
       </trans-unit>
       <trans-unit id="ya2ojl9" resname="Form_Trick_Category_Placeholder">
         <source>Form_Trick_Category_Placeholder</source>
-        <target>Choisissez une famille</target>
+        <target>-- Choisissez une famille --</target>
       </trans-unit>
       <trans-unit id="IV.wq0w" resname="Form_Label_Category">
         <source>Form_Label_Category</source>
@@ -289,6 +289,54 @@
       <trans-unit id="jlN3N2c" resname="Reset_Password_Error_Email">
         <source>Reset_Password_Error_Email</source>
         <target>La valeur du champ email ne correspond pas à l'email de votre compte. Veuillez réessayer !</target>
+      </trans-unit>
+      <trans-unit id="zh_MXTo" resname="Edit_Icon">
+        <source>Edit_Icon</source>
+        <target>Éditer la figure</target>
+      </trans-unit>
+      <trans-unit id="ZQebd44" resname="Delete_Icon">
+        <source>Delete_Icon</source>
+        <target>Supprimer la figure</target>
+      </trans-unit>
+      <trans-unit id="GPzJKoA" resname="Author_Trick_Label">
+        <source>Author_Trick_Label</source>
+        <target>Auteur</target>
+      </trans-unit>
+      <trans-unit id="o9V65pj" resname="Modal_Delete_Title">
+        <source>Modal_Delete_Title</source>
+        <target>Confirmer votre action</target>
+      </trans-unit>
+      <trans-unit id="_s5K7CK" resname="Modal_Delete_Confirmation">
+        <source>Modal_Delete_Confirmation</source>
+        <target>Voulez vous vraiment supprimer la figure : name ?</target>
+      </trans-unit>
+      <trans-unit id="1Yy1lSV" resname="Form_Delete_Button_Dismiss">
+        <source>Form_Delete_Button_Dismiss</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="dufaPpt" resname="Form_Delete_Button_Confirm">
+        <source>Form_Delete_Button_Confirm</source>
+        <target>Confirmer</target>
+      </trans-unit>
+      <trans-unit id="K3hnFad" resname="SignUp_Password_Check_Label">
+        <source>SignUp_Password_Check_Label</source>
+        <target>Répetez le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="iX69Wyo" resname="SignUp_Password_Check_Placeholder">
+        <source>SignUp_Password_Check_Placeholder</source>
+        <target>Confirmez votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="SignUp_Username_Placeholder">
+        <source>SignUp_Username_Placeholder</source>
+        <target>Votre nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="SignUp_Email_Placeholder">
+        <source>SignUp_Email_Placeholder</source>
+        <target>Votre email</target>
+      </trans-unit>
+      <trans-unit id="SignUp_Password_Placeholder">
+        <source>SignUp_Password_Placeholder</source>
+        <target>Votre mot de passe</target>
       </trans-unit>
     </body>
   </file>

@@ -7,6 +7,7 @@ use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,15 +24,16 @@ class SecurityController extends AbstractController
 {
     private $translator;
 
-
     public function __construct(TranslatorInterface $translator) {
       $this->translator = $translator;
     }
-  /**
-   * @Route("/login", name="_login")
-   * @param AuthenticationUtils $authenticationUtils
-   * @return Response
-   */
+
+	/**
+	 * @Route("/login", name="_login")
+	 * @param AuthenticationUtils $authenticationUtils
+	 * @param AuthorizationCheckerInterface $authorizationChecker
+	 * @return Response
+	 */
     public function login(AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authorizationChecker): Response
     {
         if ($this->getUser() || $authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -48,13 +50,14 @@ class SecurityController extends AbstractController
 
   /**
    * @Route("registration", name="_registration")
-   * @param Request $request
    * @param UserPasswordEncoderInterface $passwordEncoder
    * @param GuardAuthenticatorHandler $guardHandler
    * @param LoginFormAuthenticator $authenticator
    * @return Response
    */
-  public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+  public function register(Request $request,UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler
+$guardHandler,
+		LoginFormAuthenticator $authenticator): Response
   {
     $user = new User();
     $form = $this->createForm(RegistrationFormType::class, $user);
@@ -90,23 +93,25 @@ class SecurityController extends AbstractController
     ]);
   }
 
-  /**
-   * @Route("reset-password", name="_reset_password")
-   * @param Request $request
-   * @param UserPasswordEncoderInterface $passwordEncoder
-   * @param AuthorizationCheckerInterface $authorizationChecker
-   * @return Response
-   */
+	/**
+	 * @Route("reset-password", name="_reset_password")
+	 * @param Request $request
+	 * @param UserPasswordEncoderInterface $passwordEncoder
+	 * @param AuthorizationCheckerInterface $authorizationChecker
+	 * @param UserRepository $userRepository
+	 * @return Response
+	 */
     public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder,
       AuthorizationCheckerInterface $authorizationChecker, UserRepository $userRepository) {
 
       if($authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
 
-        $user = $userRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
-
         if($request->isMethod('POST')){
 
-          if($user->getEmail() == $request->request->get('email') && $this->isCsrfTokenValid('authenticate', $request->request->get('token'))) {
+          $user = $userRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
+
+          if($user->getEmail() == $request->get('email') && $this->isCsrfTokenValid('authenticate',
+							$request->get('token'))) {
 
             $user->setPassword(
               $passwordEncoder->encodePassword(
@@ -125,6 +130,26 @@ class SecurityController extends AbstractController
         return $this->redirectToRoute(('home'));
       }
     }
+
+	/**
+	 * @Route("/search-this-username", name="_search_user")
+	 * @param UserRepository $userRepository
+	 * @param Request $request
+	 * @return JsonResponse
+	 */
+    public function searchUser(UserRepository $userRepository, Request $request) {
+    	if($request->isXmlHttpRequest()) {
+
+    		$users = $userRepository->findAll();
+				foreach ($users as $user) {
+
+					if( strcasecmp($request->get('username'), $user->getUsername()) == 0 ) {
+						return new JsonResponse('true', Response::HTTP_NOT_FOUND);
+					}
+				}
+				return new JsonResponse('false');
+			}
+		}
 
     /**
      * @Route("forgot-password", name="_forgot_password")

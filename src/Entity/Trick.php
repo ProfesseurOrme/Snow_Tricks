@@ -71,6 +71,11 @@ class Trick
      */
     private $modifiedDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tricks")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->videos = new ArrayCollection();
@@ -249,6 +254,18 @@ class Trick
     public function setModifiedDate(?\DateTimeInterface $modifiedDate): self
     {
         $this->modifiedDate = $modifiedDate;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

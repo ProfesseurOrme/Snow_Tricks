@@ -1,33 +1,38 @@
 {% extends 'template.html.twig' %}
 
 {% block body %}
-<div class="page-header header-filter" style="background-image: url({{ asset('pictures/background.jpg') }})">
+<div class="page-header page-register header-filter" style="background-image: url({{ asset('pictures/background.jpg')
+}})">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="card text-center">
                     <div class="card-body">
                         {{ form_start(registrationForm) }}
-                            <h1 class="h3 mb-3 font-weight-normal">{{ 'SignUp_Title_Form'|trans }}</h1>
+                            <h3>{{ 'SignUp_Title_Form'|trans }}</h3>
                             {% for flashError in app.flashes('verify_email_error') %}
                                 <div class="alert alert-danger" role="alert">{{ flashError }}</div>
                             {% endfor %}
                             <div class="form-group">
-                                <label for="{{ 'SignUp_Username_Label_For'|trans }}">{{ 'SignUp_Username_Label'|trans
-                                    }}</label>
-                                {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+                                <label for="{{ 'SignUp_Username_Label_For'|trans }}">{{ 'SignUp_Username_Label'|trans }} : </label>{{ form_widget(registrationForm.username, {'id' : 'input-username' ,'attr': {'class':'form-control', 'placeholder' : 'SignUp_Username_Placeholder','data-search' : path('app_search_user') }}) }}
+                                <small id="usernameHelp" class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
-                                <label for="{{ 'SignUp_Email_Label_For'|trans }}">{{ 'SignUp_Email_Label'|trans
-                                    }}</label>
-                                {{ form_widget(registrationForm.email, {'attr' : {'class': 'form-control'}}) }}
+                                <label for="{{ 'SignUp_Email_Label_For'|trans }}">{{ 'SignUp_Email_Label'|trans }} : </label>
+                                {{ form_widget(registrationForm.email, {'attr' : {'class': 'form-control', 'placeholder' : 'SignUp_Email_Placeholder'}}) }}
+                                <small id="emailHelp" class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
-                                <label for="{{ 'SignUp_Password_Label_For'|trans }}">{{ 'SignUp_Password_Label'|trans
-                                    }}</label>
-                                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                                <label for="{{ 'SignUp_Password_Label_For'|trans }}">{{ 'SignUp_Password_Label'|trans }} : </label>
+                                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control' , 'placeholder' : 'SignUp_Password_Placeholder'}}) }}
+                                <small id="passwordHelp" class="form-text text-muted"></small>
                             </div>
-                            <button type="submit" class="btn btn-dark-blue">{{ 'SignUp_Button_Create'|trans }}</button>
+                            <div class="form-group">
+                                <label for="{{ 'SignUp_Password_Label_For'|trans }}">{{ 'SignUp_Password_Check_Label'|trans }} : </label>
+                                <input class="form-control" type="password" name="password_check" placeholder="{{ 'SignUp_Password_Check_Placeholder'|trans }}">
+                                <small id="passwordCheckHelp" class="form-text text-muted"></small>
+                            </div>
+                            <button type="submit" class="btn btn-dark-blue" disabled>{{ 'SignUp_Button_Create'|trans }}</button>
                         {{ form_end(registrationForm) }}
                     </div>
                 </div>
@@ -35,4 +40,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('register') }}
 {% endblock %}

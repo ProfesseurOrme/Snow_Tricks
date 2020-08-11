@@ -2,14 +2,22 @@
 
 {% block title %}{{ 'Meta_Title_Detail_Trick'|trans({'name' : trick.name }) }}{% endblock %}
 
+{% import 'macros/modal-delete.html.twig' as macro %}
 {% block body %}
     <div class="page-header header-filter page-header-trick">
     </div>
     <section class="main main-raised alt-main main-describe">
         <div class="section-header-trick page-header header-filter" style="background: url({{ asset
             ('upload_directory/'~trick.picture) }}) no-repeat center center;">
-            <div class="container">
+            <div class="container h-100 w-100">
                 <div class="row">
+                    <div class="col">
+                        <div class="tool float-right">
+                            <a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a><a data-placement="top" data-toggle="modal" data-target="#deleteModal"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row h-75 w-100 align-items-center">
                     <div class="col-md-8 ml-auto mr-auto">
                         <div class="brand text-center">
                             <h1>{{ trick.name }}</h1>
@@ -20,11 +28,11 @@
         </div>
         <div class="section section-basic">
             <div class="container">
-                <div class="row mx-auto">
-                    <div class="col-md-10 text-center">
+                <div class="row">
+                    <div class="col-md-10 text-center mx-auto">
                         <span class="badge badge-pill">{{ trick.category.name }}</span>
-                        <span class="badge badge-pill">{{ 'Trick_Date_Created'|trans }} : {{ trick.date|date
-                                ('d-m-Y') }} - {{ trick.date|date('H:i') }}</span>
+                        <span class="badge badge-pill">{{ 'Trick_Date_Created'|trans }} : {{ trick.date|date('d-m-Y') }} - {{ trick.date|date('H:i') }}</span>
+                        <span class="m-1">{{ 'Author_Trick_Label'|trans }} : {{ trick.user.username }}</span>
                     </div>
                 </div>
                 <hr>
@@ -125,8 +133,8 @@
                     </div>
                 </div>
                 <hr>
-                <div class="row mx-auto">
-                    <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
                         {{ trick.description|raw }}
                     </div>
                 </div>
@@ -139,15 +147,15 @@
                     </div>
                 </div>
                 <div class="row mx-auto">
-                    <div class="col-md-8">
+                    <div class="col-md-8 mx-auto">
                         {{ form_start(formComment) }}
                         <div class="row align-items-center">
-                            <div class="col-6">
+                            <div class="col-8">
                                 <label for="{{ 'Trick_Comment_Label_For'|trans }}">{{ 'Trick_Comment_Label'|trans }} :</label>
                                 {{ form_widget(formComment.content, {'attr' : {'class' : 'form-control',
                                     'placeholder' : 'Trick_Comment_Placeholder' }}) }}
                             </div>
-                            <div class="col-6 align-middle">
+                            <div class="col-4 mx-auto align-middle text-center">
                                 <button type="submit" class="btn btn-dark-blue" >
                                     {{ 'Trick_Comment_Submit_Button'|trans }}
                                     <span class="material-icons">
@@ -181,4 +189,5 @@
             </div>
         </div>
     </section>
+    {{ macro.delete_modal(trick.name,trick.slug) }}
 {% endblock %}

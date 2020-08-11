@@ -16,14 +16,14 @@
         </div>
     </div>
 </section>
-<section class="main main-raised alt-main">
+<section id="edit-trick" class="main main-raised alt-main">
     {{ form_start(form) }}
     <div class="container">
         <div class="section text-center">
             <h3>{{ 'Trick_Title_Form'|trans }}</h3>
             <h5>{{ 'Trick_Subtitle_Form'|trans }}</h5>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 mx-auto">
             <div class="form-group">
                 <label for="{{ 'Form_Label_For_Name'|trans }}">{{ 'Form_Label_Name'|trans }} : </label>
                 {{ form_widget(form.name, {'attr': {'placeholder': 'Form_Trick_Name', 'class': 'form-control' }}) }}
@@ -36,7 +36,7 @@
                     {{ 'Form_Button_Add_Picture'|trans }}
                     <i class="material-icons">attach_file</i>
                 </button>
-                <div class="input-file-value"></div>
+                <div class="input-file-value">{{ trick.picture }}</div>
             </div>
             <div class="form-group">
                 <label for="{{ 'Form_Label_For_Description'|trans }}">{{ 'Form_Label_Description'|trans }} : </label>
@@ -48,16 +48,15 @@
             <div class="form-group">
                 <label class="bmd-label-static" for="{{ 'Form_Label_For_Category'|trans }}">{{
                     'Form_Label_Category'|trans }} : </label>
-                {% set categoryPlaceholder = '-- ' ~ 'Form_Trick_Category_Placeholder'|trans ~ ' --' %}
                 {{ form_widget(form.category, {'attr' : {'class' : 'form-control'}, 'placeholder' :
-                    categoryPlaceholder }) }}
+                    'Form_Trick_Category_Placeholder'|trans }) }}
             </div>
         </div>
         <div class="section text-center">
             <h3>{{ 'Trick_Title_Media'|trans }}</h3>
             <h5>{{ 'Trick_Subtitle_Media'|trans }}</h5>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-10 mx-auto">
             <div class="form-group form-file">
                 <label class="bmd-label-static" for="{{ 'Form_Label_For_Pictures'|trans }}">{{ 'Form_Label_Main_Pictures'|trans }} : </label>
                 {{ form_widget(form.pictures, {'attr' : {'class' : 'file-input-element'}}) }}
@@ -66,6 +65,17 @@
                     <i class="material-icons">add</i>
                 </button>
                 <div class="input-file-value">
+                    {% set imageUploaded = '' %}
+                    {% set m = 0 %}
+                    {% for image in trick.pictures %}
+                        {% set m = m + 1 %}
+                        {% if m == 1 %}
+                            {% set imageUploaded = imageUploaded ~ image.fileName %}
+                        {% else %}
+                            {% set imageUploaded = imageUploaded ~ ' / ' ~ image.fileName %}
+                        {% endif %}
+                    {% endfor %}
+                    {{ imageUploaded }}
                 </div>
             </div>
             <div class="form-group">

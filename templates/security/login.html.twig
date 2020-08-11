@@ -3,14 +3,15 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div class="page-header header-filter" style="background-image: url({{ asset('pictures/background.jpg') }})">
+<div id="login" class="page-header header-filter" style="background-image: url({{ asset('pictures/background.jpg')
+}})">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="card text-center">
                     <div class="card-body">
                         <form method="post">
-                            <h1 class="h3 mb-3 font-weight-normal">{{ 'LogIn_Title_Form'|trans }}</h1>
+                            <h3>{{ 'LogIn_Title_Form'|trans }}</h3>
                             {% if error %}
                                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                             {% endif %}
@@ -23,7 +24,6 @@
                                <input type="password" name="password" id="inputPassword" class="form-control" required>
                             </div>
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
                             <div class="checkbox mb-3">
                                 <label class="form-check-label" for="{{ 'LogIn_Remember_me_Label'|trans }}">
                                     <input type="checkbox" class="form-check-input" name="_remember_me"> {{

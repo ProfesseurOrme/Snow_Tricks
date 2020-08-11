@@ -21,41 +21,52 @@ use Symfony\Component\Routing\Annotation\Route;
 class TrickController extends AbstractController
 {
 
+  private $manager;
+  private $upload;
+
+    public function __construct(EntityManagerInterface $manager, UploadService $upload) {
+      $this->manager = $manager;
+      $this->upload = $upload;
+    }
+
   /**
    * @Route("/create_trick/", name="_create")
+   * @Route("/edit-{slug}", name="_edit")
    * @param Request $request
-   * @param UploadService $upload
-   * @param EntityManagerInterface $manager
+   * @param Trick $trick
    * @return Response
    */
-    public function editTrick(Request $request, UploadService $upload, EntityManagerInterface $manager)
+    public function editTrick(Request $request, Trick $trick = null)
     {
-        $trick = new Trick();
+        if(!$trick) {
+          $trick = new Trick();
+        }
+
         $form = $this->createForm(TrickFormType::class, $trick);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-          $newPicture = $upload->uploadFile($form['picture']->getData());
-
+          $newPicture = $this->upload->uploadFile($form['picture']->getData());
 
           foreach ($form['pictures']->getData() as $keyPicture => $pic) {
             $picture = new Picture();
-            $newPictures = $upload->uploadFile($pic);
+            $newPictures = $this->upload->uploadFile($pic);
             $picture->setFileName($newPictures);
 
             $trick->addPicture($picture);
           }
           $trick->setPicture($newPicture);
           $trick->setDate(new \DateTime('NOW'));
-          $manager->persist($trick);
-          $manager->flush();
+          $this->manager->persist($trick);
+          $this->manager->flush();
 
           $this->redirectToRoute('home');
         }
         return $this->render('tricks/edit_trick.html.twig', [
-          'form' => $form->createView()
+          'form' => $form->createView(),
+          'trick' => ($trick) ? $trick : null
         ]);
     }
 
@@ -96,5 +107,17 @@ class TrickController extends AbstractController
         'comments' => ($trick->getComments()->isEmpty()) ? null : $trick->getComments(),
         'formComment' => $formComment->createView()
       ]);
+    }
+
+  /**
+   * @Route("/delete-trick-{slug}", name="_delete")
+   * @param Trick $trick
+   */
+    public function deleteTrick(Trick $trick) {
+
+      $this->manager->remove($trick);
+      $this->manager->flush();
+
+      $this->redirectToRoute('home');
     }
 }
