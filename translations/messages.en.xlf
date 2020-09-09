@@ -238,6 +238,14 @@
         <source>SignUp_Username_Label</source>
         <target>Username</target>
       </trans-unit>
+      <trans-unit id="SignUp_Username_Invalid">
+        <source>SignUp_Username_Invalid</source>
+        <target>Username already existing. Please, try another</target>
+      </trans-unit>
+      <trans-unit id="SignUp_Username_Valid">
+        <source>SignUp_Username_Valid</source>
+        <target>Username valid and available</target>
+      </trans-unit>
       <trans-unit id="72tDUej" resname="SignUp_Email_Label_For">
         <source>SignUp_Email_Label_For</source>
         <target>email</target>
@@ -308,7 +316,7 @@
       </trans-unit>
       <trans-unit id="_s5K7CK" resname="Modal_Delete_Confirmation">
         <source>Modal_Delete_Confirmation</source>
-        <target>Do you really want to delete this trick : name ?</target>
+        <target>Do you really want to delete this trick</target>
       </trans-unit>
       <trans-unit id="1Yy1lSV" resname="Form_Delete_Button_Dismiss">
         <source>Form_Delete_Button_Dismiss</source>
@@ -322,21 +330,21 @@
         <source>SignUp_Password_Check_Label</source>
         <target>Repeat password</target>
       </trans-unit>
-      <trans-unit id="SignUp_Username_Placeholder">
+      <trans-unit id="VF6Au6Q" resname="SignUp_Username_Placeholder">
         <source>SignUp_Username_Placeholder</source>
         <target>Your username</target>
       </trans-unit>
-      <trans-unit id="SignUp_Email_Placeholder">
+      <trans-unit id="0lFD9LW" resname="SignUp_Email_Placeholder">
         <source>SignUp_Email_Placeholder</source>
         <target>Your email</target>
       </trans-unit>
       <trans-unit id="iX69Wyo" resname="SignUp_Password_Check_Placeholder">
         <source>SignUp_Password_Check_Placeholder</source>
-        <target>Rewrite your password</target>
-      </trans-unit>
-      <trans-unit id="SignUp_Password_Placeholder">
-        <source>SignUp_Password_Check_Placeholder</source>
         <target>Your password</target>
+      </trans-unit>
+      <trans-unit id="EvLtsq_" resname="Home_Link_Trick">
+        <source>Home_Link_Trick</source>
+        <target>See</target>
       </trans-unit>
     </body>
   </file>

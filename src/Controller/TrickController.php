@@ -31,7 +31,7 @@ class TrickController extends AbstractController
 
   /**
    * @Route("/create_trick/", name="_create")
-   * @Route("/edit-{slug}", name="_edit")
+   * @Route("/edit-{slug}", options={"expose"=true},name="_edit")
    * @param Request $request
    * @param Trick $trick
    * @return Response
@@ -71,7 +71,7 @@ class TrickController extends AbstractController
     }
 
   /**
-   * @Route("/{slug}", name="_detail")
+   * @Route("/{slug}", options={"expose"=true},name="_detail")
    * @param Trick $trick
    * @param Request $request
    * @return Response
@@ -110,7 +110,7 @@ class TrickController extends AbstractController
     }
 
   /**
-   * @Route("/delete-trick-{slug}", name="_delete")
+   * @Route("/delete-trick-{slug}", options={"expose"=true}, name="_delete")
    * @param Trick $trick
    */
     public function deleteTrick(Trick $trick) {

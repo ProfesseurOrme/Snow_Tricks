@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
     <head>
         {% include 'assets/meta_date.html.twig' %}
         <title>{% block title %}{% endblock %}</title>
@@ -8,7 +8,7 @@
         {% include "assets/navbar.html.twig" %}
         {% block body %}{% endblock %}
         {% include "assets/footer.html.twig" %}
-        {% include 'assets/scripts.html.twig' %}
+        {{ encore_entry_script_tags('app') }}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -29,12 +29,13 @@ $(document).ready(function() {
                     username : data
                 },
                 success: json => {
-                    help.text('Identifiant valide et disponible !');
+                    help.text(Translator.trans('SignUp_Username_Valid') + ' !');
                     icoValid.insertBefore(help);
                     $(this).parent().addClass('has-success');
+                    $('.btn-dark-blue').prop('disabled', false);
                 },
                 error: () => {
-                    help.text('Identifiant déja existant. Veuillez en choisir un autre !');
+                    help.text(Translator.trans('SignUp_Username_Invalid') + ' !');
                     icoError.insertBefore(help);
                     $(this).parent().addClass('has-danger');
                 }

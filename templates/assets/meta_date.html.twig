@@ -1,5 +1,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Le site de tous les amoureux de snowboard : Snow Tricks !" />
+<meta name="description" content="Le site de tout les amoureux de snowboard : Snow Tricks !" />
+<script src="{{ asset('/js/core/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/core/popper.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/core/bootstrap-material-design.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/material-kit.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/bundles/bazingajstranslation/js/translator.min.js') }}"></script>
+<script src="{{ url('bazinga_jstranslation_js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 <link rel="stylesheet" href="{{ asset('css/material-kit.min.css') }}">
 {{ encore_entry_link_tags('app') }}
