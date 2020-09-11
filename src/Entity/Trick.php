@@ -57,6 +57,7 @@ class Trick
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="trick")
+		 * @ORM\OrderBy({"id" = "DESC"})
      */
     private $comments;
 

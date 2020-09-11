@@ -214,7 +214,7 @@ div.section-header-trick {
   border-radius: 6px 6px 0 0;
 }
 
-hr {
+hr:not(.line-comment) {
   margin-top: 1.4rem;
   margin-bottom: 1.4rem;
 }

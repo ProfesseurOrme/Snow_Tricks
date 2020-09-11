@@ -29,7 +29,7 @@ class HomeController extends AbstractController
       $listTricks = $paginator->paginate(
 				$tricks,
 				1,
-				4
+				8
 			);
 
       return $this->render('home/index.html.twig', [
@@ -45,7 +45,7 @@ class HomeController extends AbstractController
 	 * @param PaginatorInterface $paginator
 	 * @param Request $request
 	 * @param $page
-	 * @return JsonResponse
+	 * @return Response
 	 */
     public function loadMoreTricks(TrickRepository $trickRepository, PaginatorInterface $paginator, Request $request, $page) {
 
@@ -56,20 +56,15 @@ class HomeController extends AbstractController
 				$tricks = $paginator->paginate(
 					$query,
 					$page,
-					4
+					8
 				);
 
-				$index = 0;
-				$trickAr = [];
-				foreach ($tricks->getItems() as $trick) {
-					$trickAr[$index]['id'] = $trick->getId();
-					$trickAr[$index]['name'] = $trick->getName();
-					$trickAr[$index]['slug'] = $trick->getSlug();
-					$trickAr[$index]['picture'] = $trick->getPicture();
-					$index++;
-				}
-
-				return new JsonResponse($trickAr);
+				return $this->render('assets/card_trick.html.twig', [
+					'tricks' => $tricks,
+					'nbTricks' => $tricks->getTotalItemCount()
+				]);
+			} else {
+				return new JsonResponse('no');
 			}
 		}
 }

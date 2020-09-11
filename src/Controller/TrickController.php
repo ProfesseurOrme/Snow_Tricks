@@ -12,7 +12,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 
 /**
@@ -76,7 +78,7 @@ class TrickController extends AbstractController
    * @param Request $request
    * @return Response
    */
-    public function getDetailsTrick(Trick $trick, Request $request) {
+    public function getDetailsTrick(Trick $trick, Request $request, Security $security) {
 
       $comment = new Comment();
 
@@ -97,8 +99,15 @@ class TrickController extends AbstractController
         }
       }
 
-      if($formComment->isSubmitted() && $formComment->isValid()) {
-        echo 'pouet';
+      if($formComment->isSubmitted() && $formComment->isValid() && !is_null($security->getUser())) {
+      	$comment = $formComment->getData();
+
+      	$comment->setDate(new \DateTime('NOW'));
+      	$comment->setTrick($trick);
+      	$comment->setUser($security->getUser());
+
+      	$this->manager->persist($comment);
+      	$this->manager->flush();
       }
 
       return $this->render('tricks/detail-trick.html.twig', [

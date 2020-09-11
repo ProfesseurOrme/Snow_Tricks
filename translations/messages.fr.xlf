@@ -238,11 +238,11 @@
         <source>SignUp_Username_Label</source>
         <target>Pseudo</target>
       </trans-unit>
-      <trans-unit id="SignUp_Username_Invalid">
+      <trans-unit id="QnbfQoz" resname="SignUp_Username_Invalid">
         <source>SignUp_Username_Invalid</source>
         <target>Identifiant déja existant. Veuillez en choisir un autre</target>
       </trans-unit>
-      <trans-unit id="SignUp_Username_Valid">
+      <trans-unit id="LkIo8Pr" resname="SignUp_Username_Valid">
         <source>SignUp_Username_Valid</source>
         <target>Identifiant valide et disponible</target>
       </trans-unit>
@@ -349,6 +349,18 @@
       <trans-unit id="EvLtsq_" resname="Home_Link_Trick">
         <source>Home_Link_Trick</source>
         <target>Voir</target>
+      </trans-unit>
+      <trans-unit id="WspQn3s" resname="Trick_Comment_Message">
+        <source>Trick_Comment_Message</source>
+        <target>Voir les commentaires</target>
+      </trans-unit>
+      <trans-unit id="oKDDF5I" resname="Trick_Comment_Log">
+        <source>Trick_Comment_Log</source>
+        <target>Vous n'êtes pas enregistré</target>
+      </trans-unit>
+      <trans-unit id="gWL.riR" resname="Trick_Comment_Log_Details">
+        <source>Trick_Comment_Log_Details</source>
+        <target>Veuillez vous authentifier ou enregistrez vous si vous n'êtes pas déjà inscrit</target>
       </trans-unit>
     </body>
   </file>

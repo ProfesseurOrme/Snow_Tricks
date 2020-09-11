@@ -11,13 +11,17 @@
         <div class="section-header-trick page-header header-filter" style="background: url({{ asset
             ('upload_directory/'~trick.picture) }}) no-repeat center center;">
             <div class="container h-100 w-100">
-                <div class="row">
-                    <div class="col">
-                        <div class="tool float-right">
-                            <a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a><a data-placement="top" data-toggle="modal" data-target="#deleteModal"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if is_granted('ROLE_ADMIN') or app.user.username == trick.user.username %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="tool float-right">
+                                    <a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a><a data-placement="top" data-toggle="modal" data-target="#deleteModal"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    {% endif %}
+                {% endif %}
                 <div class="row h-75 w-100 align-items-center">
                     <div class="col-md-8 ml-auto mr-auto">
                         <div class="brand text-center">
@@ -148,37 +152,64 @@
                     </div>
                 </div>
                 <div class="row mx-auto">
-                    <div class="col-md-8 mx-auto">
-                        {{ form_start(formComment) }}
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <label for="{{ 'Trick_Comment_Label_For'|trans }}">{{ 'Trick_Comment_Label'|trans }} :</label>
-                                {{ form_widget(formComment.content, {'attr' : {'class' : 'form-control',
-                                    'placeholder' : 'Trick_Comment_Placeholder' }}) }}
-                            </div>
-                            <div class="col-4 mx-auto align-middle text-center">
-                                <button type="submit" class="btn btn-dark-blue" >
-                                    {{ 'Trick_Comment_Submit_Button'|trans }}
-                                    <span class="material-icons">
-                                        send
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                        {{ form_end(formComment) }}
+                    <div class="col-md-8  text-center mx-auto">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {{ form_start(formComment) }}
+                                    <label for="{{ 'Trick_Comment_Label_For'|trans }}">{{ 'Trick_Comment_Label'|trans }} :</label>
+                                    {{ form_widget(formComment.content, {'attr' : {'class' : 'form-control',
+                                        'placeholder' : 'Trick_Comment_Placeholder' }}) }}
+                                </div>
+                                <div class="col-4 mx-auto align-middle text-center">
+                                    <button type="submit" class="btn btn-dark-blue" >
+                                        {{ 'Trick_Comment_Submit_Button'|trans }}
+                                        <span class="material-icons">
+                                            send
+                                        </span>
+                                    </button>
+                                </div>>
+                            {{ form_end(formComment) }}
+                        {% else %}
+                                    <div class="brand text-center">
+                                        <h4>{{ 'Trick_Comment_Log'|trans }}.</h4>
+                                        <h5>{{ 'Trick_Comment_Log_Details'|trans }} !</h5>
+                                    </div>
+                                    <a href="{{ path('app_login') }}" class="btn btn-dark-blue" >
+                                        {{ 'Sign in'|trans }}
+                                        <span class="material-icons">
+                                            send
+                                        </span>
+                                    </a>
+                                    <a href="{{ path('app_registration') }}" class="btn btn-dark-blue" >
+                                        {{ 'Sign up'|trans }}
+                                        <span class="material-icons">
+                                            add
+                                        </span>
+                                    </a>
+                        {% endif %}
                     </div>
                 </div>
                 <hr>
                 <div class="row justify-content-center">
                     {% if comments is not null %}
-                        {% for comment in comments %}
-                            {{ dump(comment) }}
-                            <div class="col-md-8 ml-auto mr-auto">
-                                <div class="brand text-center">
-                                    <h3>Il y a un commentaire</h3>
-                                </div>
+                        <div class="col-md-8 ml-auto mr-auto">
+                            <div class="brand text-center">
+                                <h3>{{ 'Trick_Comment_Message'|trans }} : </h3>
                             </div>
-                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 ml-auto mr-auto">
+                            {% for comment in comments %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>{{ comment.user.username ~ ' - ' ~ comment.date|date('d/m/Y') }}</h5>
+                                        <hr class="line-comment">
+                                        <p>{{ comment.content }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                     {% else %}
                         <div class="col-md-8 ml-auto mr-auto">
                             <div class="brand text-center">

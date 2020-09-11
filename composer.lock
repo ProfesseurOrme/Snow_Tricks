@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd9f567e74a330cfbfdacad286ede9c4",
+    "content-hash": "424a8339a3d272e8988d8f0c1167e757",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3580,6 +3580,59 @@
             "time": "2020-06-12T08:11:32+00:00"
         },
         {
+            "name": "symfony/google-mailer",
+            "version": "v5.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/google-mailer.git",
+                "reference": "361611404c036c6347329e996a289374c3148499"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/google-mailer/zipball/361611404c036c6347329e996a289374c3148499",
+                "reference": "361611404c036c6347329e996a289374c3148499",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/mailer": "^4.4|^5.0"
+            },
+            "require-dev": {
+                "symfony/http-client": "^4.4|^5.0"
+            },
+            "type": "symfony-bridge",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\Bridge\\Google\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Google Mailer Bridge",
+            "homepage": "https://symfony.com",
+            "time": "2020-05-20T17:43:50+00:00"
+        },
+        {
             "name": "symfony/http-client",
             "version": "v5.1.2",
             "source": {
@@ -4009,16 +4062,16 @@
         },
         {
             "name": "symfony/mailer",
-            "version": "v5.1.2",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "203f236f1c2f4d8980f3c4120c8032c8cfe1e893"
+                "reference": "f728de093c1f5360c52a6a929e70852a6c3fb2dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/203f236f1c2f4d8980f3c4120c8032c8cfe1e893",
-                "reference": "203f236f1c2f4d8980f3c4120c8032c8cfe1e893",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/f728de093c1f5360c52a6a929e70852a6c3fb2dc",
+                "reference": "f728de093c1f5360c52a6a929e70852a6c3fb2dc",
                 "shasum": ""
             },
             "require": {
@@ -4073,20 +4126,20 @@
             ],
             "description": "Symfony Mailer Component",
             "homepage": "https://symfony.com",
-            "time": "2020-06-11T21:20:02+00:00"
+            "time": "2020-08-31T19:52:58+00:00"
         },
         {
             "name": "symfony/mime",
-            "version": "v5.1.2",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "c0c418f05e727606e85b482a8591519c4712cf45"
+                "reference": "89a2c9b4cb7b5aa516cf55f5194c384f444c81dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/c0c418f05e727606e85b482a8591519c4712cf45",
-                "reference": "c0c418f05e727606e85b482a8591519c4712cf45",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/89a2c9b4cb7b5aa516cf55f5194c384f444c81dc",
+                "reference": "89a2c9b4cb7b5aa516cf55f5194c384f444c81dc",
                 "shasum": ""
             },
             "require": {
@@ -4136,7 +4189,7 @@
                 "mime",
                 "mime-type"
             ],
-            "time": "2020-06-09T15:07:35+00:00"
+            "time": "2020-08-17T10:01:29+00:00"
         },
         {
             "name": "symfony/monolog-bridge",
@@ -6016,7 +6069,7 @@
         },
         {
             "name": "symfony/twig-bundle",
-            "version": "v5.1.2",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bundle.git",

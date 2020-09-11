@@ -1,0 +1,17 @@
+{% for trick in tricks %}
+	<div class="col-tricks col-md-6 col-lg-3 mx-auto card-columns mx-auto d-flex justify-content-center">
+		<div class="card">
+			<img class="card-img-top" src="{{ asset('upload_directory/'~ trick.picture) }}" rel="nofollow" alt="Card image cap">
+			<div class="card-body d-flex flex-row justify-content-between">
+				<a href="{{ path('trick_detail', {'slug' : trick.slug }) }}" data-toggle="tooltip" title="{{ 'Home_Link_Trick'|trans ~ ' : '~ trick.name }}"><h4 class="card-title d-flex flex-column m-2">{{ trick.name }}</h4></a>
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					{% if is_granted('ROLE_ADMIN') or app.user.username == trick.user.username %}
+						<div class="home-tool">
+							<a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" target="_blank" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a><a class="modal-delete" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_delete', {'slug' : trick.slug}) }}" data-trickname="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a>
+						</div>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endfor %}
