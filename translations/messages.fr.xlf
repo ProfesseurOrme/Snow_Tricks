@@ -362,6 +362,22 @@
         <source>Trick_Comment_Log_Details</source>
         <target>Veuillez vous authentifier ou enregistrez vous si vous n'êtes pas déjà inscrit</target>
       </trans-unit>
+      <trans-unit id="qpcp6mZ" resname="SignUp_Picture_Label_For">
+        <source>SignUp_Picture_Label_For</source>
+        <target>image</target>
+      </trans-unit>
+      <trans-unit id="B4U.0g7" resname="SignUp_Label_Main_Picture">
+        <source>SignUp_Label_Main_Picture</source>
+        <target>Ajouter une photo de profil (optionnel)</target>
+      </trans-unit>
+      <trans-unit id="xDJiH0d" resname="Delete_Comment_Icon">
+        <source>Delete_Comment_Icon</source>
+        <target>Supprimer ce commentaire</target>
+      </trans-unit>
+      <trans-unit id="PNCVgkw" resname="Moderate_User_Icon">
+        <source>Moderate_User_Icon</source>
+        <target>Modérer cet utilisateur</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,0 +1,24 @@
+{% for comment in comments %}
+	<div class="card col-elt">
+		<div class="media">
+			{% if comment.user.picture is null %}
+				<img class="align-self-center mx-3 img-thumbnail" src="{{ asset('profil_directory/default.png') }}" alt="Generic placeholder image">
+			{% else %}
+				<img class="align-self-center mx-3 img-thumbnail" src="{{ asset('profil_directory/'~user.picture) }}" alt="Generic placeholder image">
+			{% endif %}
+			<div class="media-body">
+				<h5>{{ comment.user.username ~ ' - ' ~ comment.date|date('d/m/Y') }}</h5>
+				<p>{{ comment.content }}</p>
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					{% if is_granted('ROLE_ADMIN') or app.user.username == trick.user.username %}
+						<hr>
+						<div class="d-flex flex-row-reverse">
+							<div class="px-2"><span data-toggle="tooltip" title="{{ 'Delete_Comment_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></div>
+							<div class="px-2"><span data-toggle="tooltip" title="{{ 'Moderate_User_Icon'|trans }}" data-placement="top" class="material-icons">close</span></div>
+						</div>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endfor %}

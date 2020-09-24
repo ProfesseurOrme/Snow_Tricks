@@ -358,6 +358,22 @@
         <source>Trick_Comment_Log_Details</source>
         <target>For leave a comment, please authenticate or register if you are not already registered</target>
       </trans-unit>
+      <trans-unit id="qpcp6mZ" resname="SignUp_Picture_Label_For">
+        <source>SignUp_Picture_Label_For</source>
+        <target>picture</target>
+      </trans-unit>
+      <trans-unit id="B4U.0g7" resname="SignUp_Label_Main_Picture">
+        <source>SignUp_Label_Main_Picture</source>
+        <target>Add a profil picture (optional)</target>
+      </trans-unit>
+      <trans-unit id="xDJiH0d" resname="Delete_Comment_Icon">
+        <source>Delete_Comment_Icon</source>
+        <target>Delete this comment</target>
+      </trans-unit>
+      <trans-unit id="PNCVgkw" resname="Moderate_User_Icon">
+        <source>Moderate_User_Icon</source>
+        <target>Ban this user</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

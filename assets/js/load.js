@@ -17,16 +17,20 @@ $(document).ready(function() {
             url : url,
             dataType: 'html',
             success: data => {
-                $('.row-cols-md-4').append(data);
+                $('#add-elt').append(data);
 
-                dataLoaded = $('.col-tricks').length;
+                dataLoaded = $('.col-elt').length;
 
                 page++;
 
                 if(dataLoaded >= dataLoadedByDefault) {
                     $('.row-more').remove();
                 } else {
-                    $(this).attr('data-url',Routing.generate('home_load_more',{'page' : page}));
+                    if (typeof $(this).data('slug') !== 'undefined') {
+                        $(this).attr('data-url',Routing.generate($(this).data('route'),{'slug' : $(this).data('slug'),'page' : page}));
+                    } else {
+                        $(this).attr('data-url',Routing.generate($(this).data('route'),{'page' : page}));
+                    }
                 }
             },
         },

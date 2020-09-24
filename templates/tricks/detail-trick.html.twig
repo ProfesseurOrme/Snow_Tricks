@@ -198,18 +198,42 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8 ml-auto mr-auto">
+                        <div id="add-elt" class="col-md-8 ml-auto mr-auto">
                             {% for comment in comments %}
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5>{{ comment.user.username ~ ' - ' ~ comment.date|date('d/m/Y') }}</h5>
-                                        <hr class="line-comment">
-                                        <p>{{ comment.content }}</p>
+                                <div class="card col-elt">
+                                    <div class="media">
+                                        {% if comment.user.picture is null %}
+                                            <img class="align-self-center mx-3 my-2 img-thumbnail" src="{{ asset('profil_directory/default.png') }}" alt="Generic placeholder image">
+                                        {% else %}
+                                            <img class="align-self-center mx-3 my-2  img-thumbnail" src="{{ asset('profil_directory/'~user.picture) }}" alt="Generic placeholder image">
+                                        {% endif %}
+                                        <div class="media-body">
+                                            <h5>{{ comment.user.username ~ ' - ' ~ comment.date|date('d/m/Y') }}</h5>
+                                            <p>{{ comment.content }}</p>
+                                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                {% if is_granted('ROLE_ADMIN') or app.user.username == trick.user.username %}
+                                                    <hr>
+                                                    <div class="d-flex flex-row-reverse">
+                                                        <div class="px-2"><span data-toggle="tooltip" title="{{ 'Delete_Comment_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></div>
+                                                        {% if is_granted('ROLE_ADMIN') %}
+                                                        <div class="px-2"><span data-toggle="tooltip" title="{{ 'Moderate_User_Icon'|trans }}" data-placement="top" class="material-icons">close</span></div>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             {% endfor %}
                         </div>
                     </div>
+                    {% if nbComments > 4  %}
+                        <div class="row row-more">
+                            <div class="col text-center">
+                                  <button id="load-more" class="btn btn-dark-blue" data-url="{{ path('trick_load_more_comment', {'slug' : trick.slug,'page' : 2 }) }}" data-elements="{{ nbComments }}" data-loaded="4" data-slug="{{ trick.slug }}" data-route="trick_load_more_comment">Load More</button>
+                            </div>
+                        </div>
+                    {% endif %}
                     {% else %}
                         <div class="col-md-8 ml-auto mr-auto">
                             <div class="brand text-center">
@@ -222,4 +246,5 @@
         </div>
     </section>
     {{ macro.delete_modal(trick.name,trick.slug) }}
+    {{ encore_entry_script_tags('load') }}
 {% endblock %}

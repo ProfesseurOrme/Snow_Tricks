@@ -9,6 +9,8 @@ use App\Form\CommentFormType;
 use App\Form\TrickFormType;
 use App\Services\UploadService;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,11 +26,9 @@ class TrickController extends AbstractController
 {
 
   private $manager;
-  private $upload;
 
-    public function __construct(EntityManagerInterface $manager, UploadService $upload) {
+    public function __construct(EntityManagerInterface $manager) {
       $this->manager = $manager;
-      $this->upload = $upload;
     }
 
   /**
@@ -51,10 +51,12 @@ class TrickController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
           $newPicture = $this->upload->uploadFile($form['picture']->getData());
-
+					$upload = new UploadService('upload_directory');
+					
           foreach ($form['pictures']->getData() as $keyPicture => $pic) {
             $picture = new Picture();
-            $newPictures = $this->upload->uploadFile($pic);
+
+            $newPictures = $upload->uploadFile($pic);
             $picture->setFileName($newPictures);
 
             $trick->addPicture($picture);
@@ -72,13 +74,15 @@ class TrickController extends AbstractController
         ]);
     }
 
-  /**
-   * @Route("/{slug}", options={"expose"=true},name="_detail")
-   * @param Trick $trick
-   * @param Request $request
-   * @return Response
-   */
-    public function getDetailsTrick(Trick $trick, Request $request, Security $security) {
+	/**
+	 * @Route("/{slug}", options={"expose"=true},name="_detail")
+	 * @param Trick $trick
+	 * @param Request $request
+	 * @param Security $security
+	 * @param PaginatorInterface $oaginator
+	 * @return Response
+	 */
+    public function getDetailsTrick(Trick $trick, Request $request, Security $security, PaginatorInterface $paginator) {
 
       $comment = new Comment();
 
@@ -110,13 +114,46 @@ class TrickController extends AbstractController
       	$this->manager->flush();
       }
 
+      if(!$trick->getComments()->isEmpty()) {
+      	$listComments = $paginator->paginate(
+      		$trick->getComments(),
+					1,
+					4
+				);
+			} else {
+      	$listComments = null;
+			}
+
       return $this->render('tricks/detail-trick.html.twig', [
         'trick' => $trick,
         'videos' => $videos,
-        'comments' => ($trick->getComments()->isEmpty()) ? null : $trick->getComments(),
+        'comments' => $listComments,
+        'nbComments' => $listComments->getTotalItemCount(),
         'formComment' => $formComment->createView()
       ]);
     }
+
+	/**
+	 * @Route("/{slug}/load-more-comment-{page}", name="_load_more_comment")
+	 * @param Trick $trick
+	 * @param PaginatorInterface $paginator
+	 * @param Request $request
+	 * @return Response
+	 */
+    public function loadMoreComments(Trick $trick, PaginatorInterface $paginator, Request $request, $page) {
+			if($request->isXmlHttpRequest()) {
+
+				$listComments = $paginator->paginate(
+					$trick->getComments(),
+					$page,
+					4
+				);
+				return $this->render('assets/card-comment.html.twig', [
+					'comments' => $listComments,
+					'nbComments' => $listComments->getTotalItemCount()
+				]);
+			}
+		}
 
   /**
    * @Route("/delete-trick-{slug}", options={"expose"=true}, name="_delete")
