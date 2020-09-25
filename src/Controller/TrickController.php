@@ -151,7 +151,8 @@ class TrickController extends AbstractController
 				);
 				return $this->render('assets/card-comment.html.twig', [
 					'comments' => $listComments,
-					'nbComments' => $listComments->getTotalItemCount()
+					'nbComments' => $listComments->getTotalItemCount(),
+					'trick' => $trick
 				]);
 			}
 		}
