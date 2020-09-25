@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Picture;
 use App\Entity\Trick;
+use App\Entity\User;
 use App\Form\CommentFormType;
 use App\Form\TrickFormType;
 use App\Services\UploadService;
@@ -155,15 +156,51 @@ class TrickController extends AbstractController
 			}
 		}
 
-  /**
-   * @Route("/delete-trick-{slug}", options={"expose"=true}, name="_delete")
-   * @param Trick $trick
-   */
-    public function deleteTrick(Trick $trick) {
+	/**
+	 * @Route("/delete-trick-{slug}", options={"expose"=true}, name="_delete")
+	 * @param Trick $trick
+	 * @param Request $request
+	 */
+    public function deleteTrick(Trick $trick, Request $request) {
+			if($this->isCsrfTokenValid('delete_token', $request->request->get('csrf_token'))) {
+				$this->manager->remove($trick);
+				$this->manager->flush();
 
-      $this->manager->remove($trick);
-      $this->manager->flush();
-
-      $this->redirectToRoute('home');
+				$this->redirectToRoute('home');
+			}
     }
+
+		/**
+		 * @Route("/{slug}/delete-comment-{id}", name="_comment_delete")
+		 * @param Comment $comment
+		 */
+    public function deleteComment(Comment $comment, Request $request, $slug) {
+			if($this->isCsrfTokenValid('delete_token', $request->request->get('csrf_token'))) {
+
+				$this->manager->remove($comment);
+				$this->manager->flush();
+
+				$this->redirectToRoute('trick_detail', [
+					'slug' => $slug
+				]);
+			}
+		}
+
+	/**
+	 * @Route("/{slug}/delete-user-{id}", name="_user_delete")
+	 * @param User $user
+	 * @param Request $request
+	 * @param $slug
+	 */
+	public function deleteUser(User $user, Request $request, $slug) {
+		if($this->isCsrfTokenValid('delete_token', $request->request->get('csrf_token'))) {
+
+			$this->manager->remove($user);
+			$this->manager->flush();
+
+			$this->redirectToRoute('trick_detail', [
+				'slug' => $slug
+			]);
+		}
+	}
 }

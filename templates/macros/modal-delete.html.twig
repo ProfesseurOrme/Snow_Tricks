@@ -10,7 +10,7 @@
                 <div class="modal-body">
                     <p></p>
                 </div>
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_token') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token('delete_token') }}">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'Form_Delete_Button_Dismiss'|trans }}</button>
                     <button type="submit"  name="delete" class="btn btn-dark-blue">{{

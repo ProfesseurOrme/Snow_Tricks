@@ -7,7 +7,7 @@
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 					{% if is_granted('ROLE_ADMIN') or app.user.username == trick.user.username %}
 						<div class="home-tool">
-							<a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" target="_blank" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a><a class="modal-delete" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_delete', {'slug' : trick.slug}) }}" data-trickname="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a>
+							<a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" target="_blank" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a><a class="modal-delete-trick" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_delete', {'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a>
 						</div>
 					{% endif %}
 				{% endif %}

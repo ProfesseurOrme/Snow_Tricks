@@ -314,9 +314,17 @@
         <source>Modal_Delete_Title</source>
         <target>Confirmer votre action</target>
       </trans-unit>
-      <trans-unit id="_s5K7CK" resname="Modal_Delete_Confirmation">
-        <source>Modal_Delete_Confirmation</source>
+      <trans-unit id="JyX37ea" resname="Modal_Delete_Trick_Confirmation">
+        <source>Modal_Delete_Trick_Confirmation</source>
         <target>Voulez vous vraiment supprimer la figure</target>
+      </trans-unit>
+      <trans-unit id="Kmmwuo_" resname="Modal_Delete_User_Confirmation">
+        <source>Modal_Delete_User_Confirmation</source>
+        <target>Voulez vous vraiment supprimer l'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="YdGHIfs" resname="Modal_Delete_Comment_Confirmation">
+        <source>Modal_Delete_Comment_Confirmation</source>
+        <target>Voulez vous vraiment supprimer ce commentaire</target>
       </trans-unit>
       <trans-unit id="1Yy1lSV" resname="Form_Delete_Button_Dismiss">
         <source>Form_Delete_Button_Dismiss</source>
@@ -377,6 +385,14 @@
       <trans-unit id="PNCVgkw" resname="Moderate_User_Icon">
         <source>Moderate_User_Icon</source>
         <target>Modérer cet utilisateur</target>
+      </trans-unit>
+      <trans-unit id="Ga.T3MT" resname="Change_Profil_Picture">
+        <source>Change_Profil_Picture</source>
+        <target>Changer mon image</target>
+      </trans-unit>
+      <trans-unit id="CT92sac" resname="User_Account_Options">
+        <source>User_Account_Options</source>
+        <target>Mon compte</target>
       </trans-unit>
     </body>
   </file>

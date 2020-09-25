@@ -28,15 +28,21 @@
                             {{ 'Tricks_Create'|trans }}
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">
-                            {{ 'Log out'|trans }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_reset_password') }}">
-                            {{ 'Reset_Password'|trans }}
-                        </a>
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+                            {{ 'User_Account_Options'|trans }}
+                            <div class="ripple-container"></div></a>
+                        <div class="dropdown-menu dropdown-with-icons">
+                            <a class="nav-link" href="{{ path('app_logout') }}">
+                                {{ 'Log out'|trans }}
+                            </a>
+                            <a class="nav-link" href="{{ path('app_reset_password') }}">
+                                {{ 'Reset_Password'|trans }}
+                            </a>
+                            <a class="nav-link" href="">
+                                {{ 'Change_Profil_Picture'|trans }}
+                            </a>
+                        </div>
                     </li>
                 {% else %}
                     <li class="nav-item">

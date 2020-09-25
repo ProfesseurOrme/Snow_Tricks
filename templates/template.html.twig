@@ -8,7 +8,8 @@
         {% include "assets/navbar.html.twig" %}
         {% block body %}{% endblock %}
         {% include "assets/footer.html.twig" %}
-        {{ encore_entry_script_tags('app') }}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>
