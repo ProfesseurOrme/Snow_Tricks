@@ -390,6 +390,22 @@
         <source>User_Account_Options</source>
         <target>My Account</target>
       </trans-unit>
+      <trans-unit id="YDWbwqD" resname="Error_Title">
+        <source>Error_Title</source>
+        <target>Error</target>
+      </trans-unit>
+      <trans-unit id="L342q2L" resname="Error_Message">
+        <source>Error_Message</source>
+        <target>It seems that the site has encountered an error! Sorry for the inconvenience!</target>
+      </trans-unit>
+      <trans-unit id="qlzWL_W" resname="Error_Button_Home">
+        <source>Error_Button_Home</source>
+        <target>Return to home</target>
+      </trans-unit>
+      <trans-unit id="J.ad.IT" resname="Author_Trick_Deleted">
+        <source>Author_Trick_Deleted</source>
+        <target>Deleted author</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -394,6 +394,22 @@
         <source>User_Account_Options</source>
         <target>Mon compte</target>
       </trans-unit>
+      <trans-unit id="YDWbwqD" resname="Error_Title">
+        <source>Error_Title</source>
+        <target>Erreur</target>
+      </trans-unit>
+      <trans-unit id="L342q2L" resname="Error_Message">
+        <source>Error_Message</source>
+        <target>Il semblerait que le site rencontre une erreur ! Désolée pour le contretemps !</target>
+      </trans-unit>
+      <trans-unit id="qlzWL_W" resname="Error_Button_Home">
+        <source>Error_Button_Home</source>
+        <target>Revenir à l'accueil</target>
+      </trans-unit>
+      <trans-unit id="J.ad.IT" resname="Author_Trick_Deleted">
+        <source>Author_Trick_Deleted</source>
+        <target>Utilisateur supprimé</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

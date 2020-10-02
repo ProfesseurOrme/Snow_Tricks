@@ -1,0 +1,22 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}{{ 'Error_Title'|trans }} ! {% endblock %}
+
+{% block body %}
+	<div class="page-header page-register header-filter" style="background-image: url({{ asset('pictures/background.jpg')
+	}})">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 mx-auto">
+					<div class="card text-center">
+						<div class="card-body">
+							<h3>{{ 'Error_Title'|trans }} ! </h3>
+							<h4>{{ 'Error_Message'|trans }}</h4>
+							<a href="{{ path('home') }}" class="btn btn-dark-blue" title="">{{ 'Error_Button_Home'|trans }}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

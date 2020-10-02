@@ -8,14 +8,14 @@ use App\Entity\Trick;
 use App\Entity\User;
 use App\Form\CommentFormType;
 use App\Form\TrickFormType;
+use App\Repository\CommentRepository;
 use App\Services\UploadService;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
@@ -32,14 +32,15 @@ class TrickController extends AbstractController
       $this->manager = $manager;
     }
 
-  /**
-   * @Route("/create_trick/", name="_create")
-   * @Route("/edit-{slug}", options={"expose"=true},name="_edit")
-   * @param Request $request
-   * @param Trick $trick
-   * @return Response
-   */
-    public function editTrick(Request $request, Trick $trick = null)
+	/**
+	 * @Route("/create_trick/", name="_create")
+	 * @Route("/edit-{slug}", options={"expose"=true},name="_edit")
+	 * @param Request $request
+	 * @param Trick|null $trick
+	 * @param UploadService $upload
+	 * @return Response
+	 */
+    public function editTrick(Request $request, Trick $trick = null, UploadService $upload)
     {
         if(!$trick) {
           $trick = new Trick();
@@ -51,7 +52,7 @@ class TrickController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-          $newPicture = $this->upload->uploadFile($form['picture']->getData());
+          $newPicture = $upload->uploadFile($form['picture']->getData());
 					$upload = new UploadService('upload_directory');
 					
           foreach ($form['pictures']->getData() as $keyPicture => $pic) {
@@ -64,10 +65,11 @@ class TrickController extends AbstractController
           }
           $trick->setPicture($newPicture);
           $trick->setDate(new \DateTime('NOW'));
+          $trick->setUser($this->getUser());
           $this->manager->persist($trick);
           $this->manager->flush();
 
-          $this->redirectToRoute('home');
+          return $this->redirectToRoute('home');
         }
         return $this->render('tricks/edit_trick.html.twig', [
           'form' => $form->createView(),
@@ -80,7 +82,7 @@ class TrickController extends AbstractController
 	 * @param Trick $trick
 	 * @param Request $request
 	 * @param Security $security
-	 * @param PaginatorInterface $oaginator
+	 * @param PaginatorInterface $paginator
 	 * @return Response
 	 */
     public function getDetailsTrick(Trick $trick, Request $request, Security $security, PaginatorInterface $paginator) {
@@ -121,15 +123,17 @@ class TrickController extends AbstractController
 					1,
 					4
 				);
+      	$nbListComments = $listComments->getTotalItemCount();
 			} else {
       	$listComments = null;
+      	$nbListComments = null;
 			}
 
       return $this->render('tricks/detail-trick.html.twig', [
         'trick' => $trick,
         'videos' => $videos,
         'comments' => $listComments,
-        'nbComments' => $listComments->getTotalItemCount(),
+        'nbComments' => $nbListComments,
         'formComment' => $formComment->createView()
       ]);
     }
@@ -158,33 +162,43 @@ class TrickController extends AbstractController
 		}
 
 	/**
-	 * @Route("/delete-trick-{slug}", options={"expose"=true}, name="_delete")
+	 * @Route("/{slug}/delete-this-trick", options={"expose"=true}, name="_delete")
 	 * @param Trick $trick
-	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
-    public function deleteTrick(Trick $trick, Request $request) {
-			if($this->isCsrfTokenValid('delete_token', $request->request->get('csrf_token'))) {
-				$this->manager->remove($trick);
-				$this->manager->flush();
+    public function deleteTrick(Trick $trick) {
 
-				$this->redirectToRoute('home');
+			if($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+				if($this->isGranted('ROLE_ADMIN') || $trick->getUser()->getUsername() == $this->getUser()->getUsername()) {
+
+					$this->manager->remove($trick);
+					$this->manager->flush();
+				}
 			}
+			return $this->redirectToRoute('home');
     }
 
-		/**
-		 * @Route("/{slug}/delete-comment-{id}", name="_comment_delete")
-		 * @param Comment $comment
-		 */
-    public function deleteComment(Comment $comment, Request $request, $slug) {
-			if($this->isCsrfTokenValid('delete_token', $request->request->get('csrf_token'))) {
+	/**
+	 * @Route("/{slug}/delete-comment-{id}", name="_comment_delete")
+	 * @param CommentRepository $commentRepository
+	 * @param Request $request
+	 * @param $slug
+	 * @param $id
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
+	 */
+    public function deleteComment(CommentRepository $commentRepository, Request $request, $slug, $id) {
+			$comment = $commentRepository->find($id);
+			if($this->isGranted('IS_AUTHENTICATED_FULLY')) {
 
-				$this->manager->remove($comment);
-				$this->manager->flush();
+				if ($this->isGranted('ROLE_ADMIN') || $comment->getUser()->getUsername() == $this->getUser()->getUsername()) {
 
-				$this->redirectToRoute('trick_detail', [
-					'slug' => $slug
-				]);
+					$this->manager->remove($comment);
+					$this->manager->flush();
+				}
 			}
+			return $this->redirectToRoute('trick_detail', [
+				'slug' => $slug
+			]);
 		}
 
 	/**
@@ -192,16 +206,18 @@ class TrickController extends AbstractController
 	 * @param User $user
 	 * @param Request $request
 	 * @param $slug
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
 	public function deleteUser(User $user, Request $request, $slug) {
-		if($this->isCsrfTokenValid('delete_token', $request->request->get('csrf_token'))) {
+
+		if($this->isGranted('ROLE_ADMIN')) {
 
 			$this->manager->remove($user);
 			$this->manager->flush();
-
-			$this->redirectToRoute('trick_detail', [
-				'slug' => $slug
-			]);
 		}
+
+		return $this->redirectToRoute('trick_detail', [
+			'slug' => $slug
+		]);
 	}
 }

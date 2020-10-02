@@ -22,6 +22,23 @@
         <div class="section text-center">
             <h3>{{ 'Trick_Title_Form'|trans }}</h3>
             <h5>{{ 'Trick_Subtitle_Form'|trans }}</h5>
+            {% if not form.vars.valid %}
+                <div class="alert alert-danger">
+                    <div class="container">
+                        <div class="alert-icon">
+                            <i class="material-icons">error_outline</i>
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                        </button>
+                        {% for child in form.children %}
+                            {% for error in child.vars.errors %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
         <div class="col-md-10 mx-auto">
             <div class="form-group">

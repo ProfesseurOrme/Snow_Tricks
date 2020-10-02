@@ -2,23 +2,20 @@
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalDelete" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form id="form-delete" action="" enctype="multipart/form-data">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalDelete">{{ 'Modal_Delete_Title'|trans }}</h5>
-                </div>
-                <div class="modal-body">
-                    <p></p>
-                </div>
-                <input type="hidden" name="csrf_token" value="{{ csrf_token('delete_token') }}">
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'Form_Delete_Button_Dismiss'|trans }}</button>
-                    <button type="submit"  name="delete" class="btn btn-dark-blue">{{
-                        'Form_Delete_Button_Confirm'|trans
-                        }}</button>
-                </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalDelete">{{ 'Modal_Delete_Title'|trans }}</h5>
             </div>
-        </form>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'Form_Delete_Button_Dismiss'|trans }}</button>
+                <a id="form-delete" href="" class="btn btn-dark-blue">{{
+                    'Form_Delete_Button_Confirm'|trans
+                    }}</a>
+            </div>
+        </div>
     </div>
 </div>
 

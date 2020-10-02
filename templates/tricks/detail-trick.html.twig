@@ -37,7 +37,7 @@
                     <div class="col-md-10 text-center mx-auto">
                         <span class="badge badge-pill">{{ trick.category.name }}</span>
                         <span class="badge badge-pill">{{ 'Trick_Date_Created'|trans }} : {{ trick.date|date('d-m-Y') }} - {{ trick.date|date('H:i') }}</span>
-                        <span class="m-1">{{ 'Author_Trick_Label'|trans }} : {{ trick.user.username }}</span>
+                        <span class="m-1">{{ 'Author_Trick_Label'|trans }} : {% if trick.user.username is not null %}{{ trick.user.username }}{% else %}{{ 'Author_Trick_Deleted'|trans }}{% endif %}</span>
                     </div>
                 </div>
                 <hr>
@@ -214,9 +214,9 @@
                                                 {% if is_granted('ROLE_ADMIN') or app.user.username == comment.user.username %}
                                                     <hr>
                                                     <div class="d-flex">
-                                                        <div class="p-2"><a class="modal-delete-comment" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_comment_delete', {'id' : trick.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Comment_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a></div>
+                                                        <div class="p-2"><a class="modal-delete-comment" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_comment_delete', {'id' : comment.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Comment_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a></div>
                                                         {% if is_granted('ROLE_ADMIN') %}
-                                                            <div class="p-2"><a class="modal-delete-user" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_user_delete', {'id' : trick.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ comment.user.username }}"><span data-toggle="tooltip" title="{{ 'Moderate_User_Icon'|trans }}" data-placement="top" class="material-icons">close</span></a></div>
+                                                            <div class="p-2"><a class="modal-delete-user" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_user_delete', {'id' : comment.user.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ comment.user.username }}"><span data-toggle="tooltip" title="{{ 'Moderate_User_Icon'|trans }}" data-placement="top" class="material-icons">close</span></a></div>
                                                         {% endif %}
                                                     </div>
                                                 {% endif %}

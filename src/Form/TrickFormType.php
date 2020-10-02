@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\File;
 
 class TrickFormType extends AbstractType
 {
@@ -21,7 +23,17 @@ class TrickFormType extends AbstractType
             ->add('name',TextType::class)
             ->add('description', TextareaType::class)
             ->add('picture', FileType::class, [
-              'data_class' => null
+              'data_class' => null,
+							'constraints' => [
+								new File([
+									'maxSize' => '5000000',
+									'mimeTypes' => [
+										'image/jpeg',
+										'image/jpg',
+										'image/png'
+									]
+								])
+							]
             ])
             ->add('category', EntityType::class, [
               'class' => Category::class,
@@ -36,7 +48,19 @@ class TrickFormType extends AbstractType
             ])
             ->add('pictures', FileType::class, [
               'multiple' => true,
-              'mapped' => false
+              'mapped' => false,
+							'constraints' => [
+								new All(
+									new File([
+										'maxSize' => '5000000',
+										'mimeTypes' => [
+											'image/jpeg',
+											'image/jpg',
+											'image/png'
+										]
+									])
+								)
+							]
             ])
         ;
     }
