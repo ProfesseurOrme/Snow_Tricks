@@ -410,6 +410,14 @@
         <source>Author_Trick_Deleted</source>
         <target>Utilisateur supprimé</target>
       </trans-unit>
+      <trans-unit id="i_TUPJA" resname="Chevron_To_Trick_Down">
+        <source>Chevron_To_Trick_Down</source>
+        <target>Voir les figures</target>
+      </trans-unit>
+      <trans-unit id="6gVjrZt" resname="Chevron_To_Trick_Up">
+        <source>Chevron_To_Trick_Up</source>
+        <target>Remonter en haut</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

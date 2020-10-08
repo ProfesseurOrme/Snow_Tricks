@@ -6,16 +6,26 @@
 
 {% block body %}
 
-<section class="page-header header-filter" style="background-image: url({{ asset('pictures/background.jpg') }})">
+<section id="home-page" class="page-header header-filter" style="background-image: url({{ asset('pictures/background.jpg') }})">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-                <div class="brand">
-                    <h1>Snow Tricks</h1>
-                    <h3>{{ 'Home_Title_Description'|trans }}</h3>
+        <div class="row align-items-center">
+            <div class="col-md-10 ml-auto mr-auto">
+                {% for message in app.flashes('connexion') %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+                <div class="brand text-center">
+                    <h1>SnowTricks</h1>
+                    <h2>{{ 'Home_Title_Description'|trans }}</h2>
                 </div>
             </div>
         </div>
+    </div>
+    <a href="#trick" class="chevron-top"><span data-toggle="tooltip" title="{{ 'Chevron_To_Trick_Down'|trans }}" data-placement="top" class="material-icons">arrow_downward</span></a>
     </div>
 </section>
 <section id="trick" class="main homepage">
@@ -47,6 +57,7 @@
             </div>
         {% endif %}
     </div>
+    <a href="#home-page" class="chevron-bot"><span data-toggle="tooltip" title="{{ 'Chevron_To_Trick_Up'|trans }}" data-placement="top" class="material-icons">arrow_upward</span></a>
 </section>
 <div class="modals">
     {{ macro.delete_modal() }}

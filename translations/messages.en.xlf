@@ -406,6 +406,14 @@
         <source>Author_Trick_Deleted</source>
         <target>Deleted author</target>
       </trans-unit>
+      <trans-unit id="i_TUPJA" resname="Chevron_To_Trick_Down">
+        <source>Chevron_To_Trick_Down</source>
+        <target>To tricks section</target>
+      </trans-unit>
+      <trans-unit id="6gVjrZt" resname="Chevron_To_Trick_Up">
+        <source>Chevron_To_Trick_Up</source>
+        <target>Go to top</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

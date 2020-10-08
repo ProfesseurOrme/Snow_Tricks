@@ -1,7 +1,7 @@
 <nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="{{ path('home') }}">
+            <a class="navbar-brand navbar-color-on-scroll" color-on-scroll="100" href="{{ path('home') }}">
                 Snow Tricks</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -17,11 +17,20 @@
                         {{ 'Home'|trans }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        {{ 'Tricks'|trans }}
-                    </a>
-                </li>
+                {% if app.request.get('_route') == 'home' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trick">
+                            {{ 'Tricks'|trans }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#trick">
+                            {{ 'Tricks'|trans }}
+                        </a>
+                    </li>
+                {% endif %}
+
                 {% if app.user %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('trick_create') }}">
@@ -39,9 +48,10 @@
                             <a class="nav-link" href="{{ path('app_reset_password') }}">
                                 {{ 'Reset_Password'|trans }}
                             </a>
+                            {#
                             <a class="nav-link" href="">
                                 {{ 'Change_Profil_Picture'|trans }}
-                            </a>
+                            </a>#}
                         </div>
                     </li>
                 {% else %}

@@ -22,6 +22,9 @@ $(document).ready(function() {
                 dataLoaded = $('.col-elt').length;
 
                 page++;
+                if ($(".chevron-bot").length && dataLoaded >= 13){
+                    $(".chevron-bot").show();
+                }
 
                 if(dataLoaded >= dataLoadedByDefault) {
                     $('.row-more').remove();

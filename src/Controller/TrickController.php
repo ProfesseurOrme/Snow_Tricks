@@ -186,7 +186,7 @@ class TrickController extends AbstractController
 	 * @param $id
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
-    public function deleteComment(CommentRepository $commentRepository, Request $request, $slug, $id) {
+    public function deleteComment(CommentRepository $commentRepository, $slug, $id) {
 			$comment = $commentRepository->find($id);
 			if($this->isGranted('IS_AUTHENTICATED_FULLY')) {
 
@@ -208,14 +208,12 @@ class TrickController extends AbstractController
 	 * @param $slug
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
-	public function deleteUser(User $user, Request $request, $slug) {
+	public function deleteUser(User $user, $slug) {
 
 		if($this->isGranted('ROLE_ADMIN')) {
-
 			$this->manager->remove($user);
 			$this->manager->flush();
 		}
-
 		return $this->redirectToRoute('trick_detail', [
 			'slug' => $slug
 		]);
