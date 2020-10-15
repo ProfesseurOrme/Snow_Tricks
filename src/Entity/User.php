@@ -45,11 +45,6 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $isActive;
-
-    /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
      */
     private $comments;
@@ -68,6 +63,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resetToken;
 
     public function __construct()
     {
@@ -160,18 +160,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getIsActive(): ?bool
-    {
-        return $this->isActive;
-    }
-
-    public function setIsActive(?bool $isActive): self
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Comment[]
      */
@@ -254,6 +242,18 @@ class User implements UserInterface
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
 
         return $this;
     }

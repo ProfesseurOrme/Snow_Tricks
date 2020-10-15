@@ -414,6 +414,106 @@
         <source>Chevron_To_Trick_Up</source>
         <target>Go to top</target>
       </trans-unit>
+      <trans-unit id=".dIkhyt" resname="Trick_See_Medias">
+        <source>Trick_See_Medias</source>
+        <target>See medias</target>
+      </trans-unit>
+      <trans-unit id="Cl..0Xc" resname="Connexion_Success">
+        <source>Connexion_Success</source>
+        <target>You are connected</target>
+      </trans-unit>
+      <trans-unit id="IaixEj2" resname="Trick_Creation_Success">
+        <source>Trick_Creation_Success</source>
+        <target>This trick has been created</target>
+      </trans-unit>
+      <trans-unit id="4w96qr0" resname="Trick_Delete_Success">
+        <source>Trick_Delete_Success</source>
+        <target>This trick has been deleted</target>
+      </trans-unit>
+      <trans-unit id="OcS1Vjs" resname="Comment_Delete_Success">
+        <source>Comment_Delete_Success</source>
+        <target>Comment has been deleteds</target>
+      </trans-unit>
+      <trans-unit id="4fuU2CN" resname="User_Delete_Success">
+        <source>User_Delete_Success</source>
+        <target>User has been deleted</target>
+      </trans-unit>
+      <trans-unit id="..crLrC" resname="User_Signup_Success">
+        <source>User_Signup_Success</source>
+        <target>Hoorah ! An email has been sent to you to verify your account. P</target>
+      </trans-unit>
+      <trans-unit id="Qmysysu" resname="SignUp_Title">
+        <source>SignUp_Title</source>
+        <target>Create an account</target>
+      </trans-unit>
+      <trans-unit id="TEZ9CMh" resname="Mail_SignUp_Subject">
+        <source>Mail_SignUp_Subject</source>
+        <target>Authentication service of Snowtricks</target>
+      </trans-unit>
+      <trans-unit id="ep7jWD6" resname="Mail_SignUp_Subtitle">
+        <source>Mail_SignUp_Subtitle</source>
+        <target>Welcome name ! You've just subscribed to Snowtricks</target>
+      </trans-unit>
+      <trans-unit id="SwFxTWO" resname="Mail_SignUp_Corpus">
+        <source>Mail_SignUp_Corpus</source>
+        <target>To start contributing and exchanging, please click the button below to verify your account</target>
+      </trans-unit>
+      <trans-unit id="cBS6OwW" resname="Mail_SignUp_Button">
+        <source>Mail_SignUp_Button</source>
+        <target>Check my account</target>
+      </trans-unit>
+      <trans-unit id="FG3Y0.J" resname="User_Verify_Account_Success">
+        <source>User_Verify_Account_Success</source>
+        <target>Your account has been verified ! You can sign in now.</target>
+      </trans-unit>
+      <trans-unit id="sFCUcKp" resname="User_Not_Verfied_Message">
+        <source>User_Not_Verfied_Message</source>
+        <target>You did not verify your account, please check your emails</target>
+      </trans-unit>
+      <trans-unit id=".4CnEaz" resname="Mail_Reset_Subtitle">
+        <source>Mail_Reset_Subtitle</source>
+        <target>name. You asked to reset your password</target>
+      </trans-unit>
+      <trans-unit id="kIIAg4c" resname="Mail_Reset_Corpus">
+        <source>Mail_Reset_Corpus</source>
+        <target>Click the button below for reset it.</target>
+      </trans-unit>
+      <trans-unit id="uBDs_37" resname="Mail_Reset_Button">
+        <source>Mail_Reset_Button</source>
+        <target>Reset my password</target>
+      </trans-unit>
+      <trans-unit id="rM3eg6e" resname="Reset_Title_Form_Email">
+        <source>Reset_Title_Form_Email</source>
+        <target>For reset your password. Enter your username and mail</target>
+      </trans-unit>
+      <trans-unit id=".BVXlYb" resname="Reset_Connection_Button_Email">
+        <source>Reset_Connection_Button_Email</source>
+        <target>Send mail</target>
+      </trans-unit>
+      <trans-unit id="JiEfOIg" resname="Reset_Title_Email">
+        <source>Reset_Title_Email</source>
+        <target>Account checking</target>
+      </trans-unit>
+      <trans-unit id="v25axgo" resname="Reset_User_Label_For">
+        <source>Reset_User_Label_For</source>
+        <target>username</target>
+      </trans-unit>
+      <trans-unit id="0sT5nsn" resname="Reset_User_Label">
+        <source>Reset_User_Label</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="BtUS3XP" resname="User_Reset_Account_Success">
+        <source>User_Reset_Account_Success</source>
+        <target>An email has been sent to your mailbox</target>
+      </trans-unit>
+      <trans-unit id="9iIhvmN" resname="User_Reset_Account_Error">
+        <source>User_Reset_Account_Error</source>
+        <target>The username and email don't match. Try again</target>
+      </trans-unit>
+      <trans-unit id="G22NcQt" resname="User_Reset_Account_Valid">
+        <source>User_Reset_Account_Valid</source>
+        <target>Your password has been edited</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

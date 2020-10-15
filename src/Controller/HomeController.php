@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\Translator;
 
 /**
  * @Route("", name="home")
@@ -21,9 +22,12 @@ class HomeController extends AbstractController
 	 * @param PaginatorInterface $paginator
 	 * @return Response
 	 */
-    public function index(TrickRepository $trickRepository, PaginatorInterface $paginator)
+    public function index(TrickRepository $trickRepository, PaginatorInterface $paginator, Request $request)
     {
 
+			$translator = new Translator($request->getLocale());
+
+			dump($translator->trans('Connexion_Success'));
       $tricks = $trickRepository->findAll();
 
       $listTricks = $paginator->paginate(

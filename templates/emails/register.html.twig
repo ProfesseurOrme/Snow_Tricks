@@ -1,0 +1,13 @@
+{% extends 'emails/template-mail.html.twig' %}
+
+{% block title %}SnowTricks{% endblock %}
+
+{% block body %}
+	<div class="text" style="padding: 0 2.5em; text-align: center;">
+		<h2 style="color: #f1f1f1">{{ 'Mail_SignUp_Subtitle'|trans({'name' : user.username }) }}</h2>
+		<h3 style="color: #f1f1f1">{{ 'Mail_SignUp_Corpus'|trans }} : </h3>
+		<form action="{{ url }}" method="post" enctype="multipart/form-data">
+			<p><button type="submit" name="submit" class="btn btn-primary" style="color:#182848;padding: 10px 15px;display: inline-block;border-radius: 5px;background: #f1f1f1; cursor:pointer;">{{ 'Mail_SignUp_Button'|trans }}</button></p>
+		</form>
+	</div>
+{% endblock %}

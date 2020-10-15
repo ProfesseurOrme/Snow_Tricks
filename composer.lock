@@ -3581,7 +3581,7 @@
         },
         {
             "name": "symfony/google-mailer",
-            "version": "v5.1.5",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/google-mailer.git",

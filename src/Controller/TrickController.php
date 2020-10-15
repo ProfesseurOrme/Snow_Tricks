@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 
 /**
@@ -27,9 +28,11 @@ class TrickController extends AbstractController
 {
 
   private $manager;
+  private $translator;
 
-    public function __construct(EntityManagerInterface $manager) {
+    public function __construct(EntityManagerInterface $manager, TranslatorInterface $translator) {
       $this->manager = $manager;
+      $this->translator = $translator;
     }
 
 	/**
@@ -68,6 +71,11 @@ class TrickController extends AbstractController
           $trick->setUser($this->getUser());
           $this->manager->persist($trick);
           $this->manager->flush();
+
+					$this->addFlash(
+						'info',
+						$this->translator->trans('Trick_Creation_Success') . ' : ' . $trick->getName()
+					);
 
           return $this->redirectToRoute('home');
         }
@@ -170,9 +178,15 @@ class TrickController extends AbstractController
 
 			if($this->isGranted('IS_AUTHENTICATED_FULLY')) {
 				if($this->isGranted('ROLE_ADMIN') || $trick->getUser()->getUsername() == $this->getUser()->getUsername()) {
-
+					$name = $trick->getName();
 					$this->manager->remove($trick);
 					$this->manager->flush();
+
+					$this->addFlash(
+						'info',
+						$this->translator->trans('Trick_Delete_Success') . ' : ' . $trick->getName()
+					);
+
 				}
 			}
 			return $this->redirectToRoute('home');
@@ -194,6 +208,11 @@ class TrickController extends AbstractController
 
 					$this->manager->remove($comment);
 					$this->manager->flush();
+
+					$this->addFlash(
+						'info',
+						$this->translator->trans('Comment_Delete_Success')
+					);
 				}
 			}
 			return $this->redirectToRoute('trick_detail', [
@@ -213,6 +232,11 @@ class TrickController extends AbstractController
 		if($this->isGranted('ROLE_ADMIN')) {
 			$this->manager->remove($user);
 			$this->manager->flush();
+
+			$this->addFlash(
+				'info',
+				$this->translator->trans('User_Delete_Success')
+			);
 		}
 		return $this->redirectToRoute('trick_detail', [
 			'slug' => $slug

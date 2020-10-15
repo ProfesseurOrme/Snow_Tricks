@@ -20,6 +20,8 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\Translation\Translator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
@@ -32,16 +34,18 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $csrfTokenManager;
     private $passwordEncoder;
     private $flashBag;
+    private $translator;
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator,
 			CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder, FlashBagInterface
-			$flashBag)
+			$flashBag, TranslatorInterface $translator)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
         $this->flashBag = $flashBag;
+        $this->translator = $translator;
     }
 
     public function supports(Request $request)
@@ -77,7 +81,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         if (!$user) {
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Username could not be found.');
-        }
+        } elseif ($user->getIsVerified() == false) {
+        	throw new CustomUserMessageAuthenticationException($this->translator->trans('User_Not_Verfied_Message'));
+				}
 
         return $user;
     }
@@ -102,8 +108,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         $this->flashBag->add(
-        	'connexion',
-					'Vous êtes connecté !'
+        	'info',
+					$this->translator->trans('Connexion_Success')
 				);
 
         return new RedirectResponse($this->urlGenerator->generate('home'));

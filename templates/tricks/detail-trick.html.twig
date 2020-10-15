@@ -16,7 +16,11 @@
                         <div class="row">
                             <div class="col">
                                 <div class="tool float-right">
-                                    <a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a><a class="modal-delete-trick" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_delete', {'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a><a class="modal-delete-user" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_user_delete', {'id' : trick.user.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.user.username }}"><span data-toggle="tooltip" title="{{ 'Moderate_User_Icon'|trans }}" data-placement="top" class="material-icons">close</span></a>
+                                    <a href="{{ path('trick_edit', {'slug' : trick.slug}) }}" data-toggle="tooltip" data-placement="top" title="{{ 'Edit_Icon'|trans }}"><span class="material-icons">create</span></a>
+                                    <a class="modal-delete-trick" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_delete', {'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="modal-delete-user" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_user_delete', {'id' : trick.user.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.user.username }}"><span data-toggle="tooltip" title="{{ 'Moderate_User_Icon'|trans }}" data-placement="top" class="material-icons">close</span></a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -49,7 +53,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mx-auto">
+                <div class="row row-see-medias">
+                    <div class="col text-center" id="show_medias">
+                        <button class="btn btn-dark-blue" >{{ 'Trick_See_Medias'|trans }}</button>
+                    </div>
+                </div>
+                <div class="row mx-auto" id="block_medias">
                     <div class="col-md-6">
                         <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
                             <ol class="carousel-indicators">
@@ -169,10 +178,12 @@
                                 </div>
                             {{ form_end(formComment) }}
                         {% else %}
-                                    <div class="brand text-center">
-                                        <h4>{{ 'Trick_Comment_Log'|trans }}.</h4>
-                                        <h5>{{ 'Trick_Comment_Log_Details'|trans }} !</h5>
-                                    </div>
+                            <div class="brand text-center">
+                                <h4>{{ 'Trick_Comment_Log'|trans }}.</h4>
+                                <h5>{{ 'Trick_Comment_Log_Details'|trans }} !</h5>
+                            </div>
+                            <div class="row row-see-medias">
+                                <div class="col text-center">
                                     <a href="{{ path('app_login') }}" class="btn btn-dark-blue" >
                                         {{ 'Sign in'|trans }}
                                         <span class="material-icons">
@@ -185,6 +196,8 @@
                                             add
                                         </span>
                                     </a>
+                                </div>
+                            </div>
                         {% endif %}
                     </div>
                 </div>

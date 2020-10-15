@@ -6,13 +6,17 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\LoginFormAuthenticator;
+use App\Services\MailerService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -23,9 +27,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class SecurityController extends AbstractController
 {
     private $translator;
+    private $mailerService;
+    private $entityManager;
 
-    public function __construct(TranslatorInterface $translator) {
+    public function __construct(TranslatorInterface $translator, MailerService $mailerService, EntityManagerInterface
+		$entityManager) {
       $this->translator = $translator;
+      $this->mailerService = $mailerService;
+      $this->entityManager = $entityManager;
     }
 
 	/**
@@ -78,14 +87,27 @@ $guardHandler,
       $user->setIsVerified(false);
       $entityManager->persist($user);
       $entityManager->flush();
-      // do anything else you need here, like send an email
 
+      $url = $this->generateUrl('app_enable_user', [
+      	'username' => $user->getUsername()
+			], UrlGeneratorInterface::ABSOLUTE_URL) ;
+      $this->mailerService->sendMail($user, $url, 'emails/register.html.twig');
+
+
+			/*
       return $guardHandler->authenticateUserAndHandleSuccess(
         $user,
         $request,
         $authenticator,
         'main'
-      );
+      );*/
+
+			$this->addFlash(
+				'info',
+				$this->translator->trans('User_Signup_Success')
+			);
+
+			return $this->redirectToRoute('home');
     }
 
     return $this->render('security/register.html.twig', [
@@ -94,41 +116,46 @@ $guardHandler,
   }
 
 	/**
-	 * @Route("reset-password", name="_reset_password")
+	 * @Route("reset-password/{username}/{token}", name="_reset_password")
 	 * @param Request $request
 	 * @param UserPasswordEncoderInterface $passwordEncoder
-	 * @param AuthorizationCheckerInterface $authorizationChecker
 	 * @param UserRepository $userRepository
+	 * @param $username
+	 * @param $token
 	 * @return Response
 	 */
-    public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder,
-      AuthorizationCheckerInterface $authorizationChecker, UserRepository $userRepository) {
+    public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, UserRepository
+		$userRepository, $username, $token) {
 
-      if($authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+			if($request->isMethod('POST')){
 
-        if($request->isMethod('POST')){
+				$user = $userRepository->findOneBy(['username' => $username, 'resetToken' => $token]);
 
-          $user = $userRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
+				dump($user);
 
-          if($user->getEmail() == $request->get('email') && $this->isCsrfTokenValid('authenticate',
-							$request->get('token'))) {
+				if($this->isCsrfTokenValid('authenticate', $request->request->get('token')) && $user) {
 
-            $user->setPassword(
-              $passwordEncoder->encodePassword(
-                $user,
-                $request->request->get('password')
-              )
-            );
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-          }
-        }
-        return $this->render('security/reset-password.html.twig');
-      } else {
-        return $this->redirectToRoute(('home'));
-      }
+					$user->setPassword(
+						$passwordEncoder->encodePassword(
+							$user,
+							$request->request->get('password')
+						)
+					);
+
+					$entityManager = $this->getDoctrine()->getManager();
+					$entityManager->persist($user);
+					$entityManager->flush();
+
+					$this->addFlash(
+						'info',
+						$this->translator->trans('User_Reset_Account_Valid')
+					);
+
+					return $this->redirectToRoute('home');
+				}
+			}
+			return $this->render('security/reset-password.html.twig');
     }
 
 	/**
@@ -154,9 +181,71 @@ $guardHandler,
     /**
      * @Route("forgot-password", name="_forgot_password")
      */
-    public function forgotPassword() {
+    public function forgotPassword(Request $request, TokenGeneratorInterface $tokenGenerator) {
+
+    	if($request->isMethod('POST')) {
+
+				$submittedToken = $request->request->get('token');
+				if ($this->isCsrfTokenValid('authenticate', $submittedToken)) {
+
+					$user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $request->get
+					('username'),'email' => $request->get('email')]);
+					if($user) {
+
+						$token = $tokenGenerator->generateToken();
+						$user->setResetToken($token);
+						$url = $this->generateUrl('app_reset_password', [
+							'username' => $user->getUsername(),
+							'token' => $token
+						], UrlGeneratorInterface::ABSOLUTE_URL) ;
+
+						$this->mailerService->sendMail($user, $url, 'emails/reset-password.html.twig');
+
+						$this->entityManager->persist($user);
+						$this->entityManager->flush();
+
+						$this->addFlash(
+							'info',
+							$this->translator->trans('User_Reset_Account_Success')
+						);
+
+						return $this->redirectToRoute('home');
+
+					} else {
+						$this->addFlash(
+							'error',
+							$this->translator->trans('User_Reset_Account_Error')
+						);
+					}
+				}
+			}
+
+    	return $this->render('security/reset-password-verifymail.html.twig');
 
     }
+
+	/**
+	 * @Route("enable-this-user/{username}", name="_enable_user")
+	 * @param Request $request
+	 */
+		public function enableUser(Request $request, $username) {
+
+			if ($request->isMethod('POST')) {
+				$userDisabled = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $username]);
+
+				$userDisabled->setIsVerified(true);
+
+				$this->entityManager->persist($userDisabled);
+				$this->entityManager->flush();
+
+				$this->addFlash(
+					'info',
+					$this->translator->trans('User_Verify_Account_Success')
+				);
+
+				return $this->redirectToRoute('home');
+			}
+		}
 
     /**
      * @Route("logout", name="_logout")
