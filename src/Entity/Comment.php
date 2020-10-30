@@ -30,7 +30,8 @@ class Comment
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Trick::class, inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity=Trick::class, inversedBy="comments", cascade={"persist"})
+		 * @ORM\JoinColumn(onDelete="cascade")
      */
     private $trick;
 

@@ -24,10 +24,6 @@ class HomeController extends AbstractController
 	 */
     public function index(TrickRepository $trickRepository, PaginatorInterface $paginator, Request $request)
     {
-
-			$translator = new Translator($request->getLocale());
-
-			dump($translator->trans('Connexion_Success'));
       $tricks = $trickRepository->findAll();
 
       $listTricks = $paginator->paginate(
@@ -35,6 +31,17 @@ class HomeController extends AbstractController
 				1,
 				8
 			);
+
+			$category = [
+				'Grab',
+				'Rotation',
+				'Goofy',
+				'Loop',
+				'Lose'
+			];
+
+			$key = array_rand($category,1);
+			dump($category[$key]);
 
       return $this->render('home/index.html.twig', [
           'controller_name' => 'HomeController',

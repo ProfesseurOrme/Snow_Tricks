@@ -56,7 +56,7 @@ class Trick
     private $pictures;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="trick")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="trick", cascade={"persist"})
 		 * @ORM\OrderBy({"id" = "DESC"})
      */
     private $comments;

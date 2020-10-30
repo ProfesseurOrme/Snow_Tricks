@@ -83,7 +83,6 @@ $guardHandler,
 
       $entityManager = $this->getDoctrine()->getManager();
       $user->setRoles(['ROLE_USER']);
-      $user->setIsActive(true);
       $user->setIsVerified(false);
       $entityManager->persist($user);
       $entityManager->flush();
@@ -92,15 +91,6 @@ $guardHandler,
       	'username' => $user->getUsername()
 			], UrlGeneratorInterface::ABSOLUTE_URL) ;
       $this->mailerService->sendMail($user, $url, 'emails/register.html.twig');
-
-
-			/*
-      return $guardHandler->authenticateUserAndHandleSuccess(
-        $user,
-        $request,
-        $authenticator,
-        'main'
-      );*/
 
 			$this->addFlash(
 				'info',
