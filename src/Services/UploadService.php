@@ -15,7 +15,11 @@
       $this->targetDirectory = $targetDirectory;
     }
 
-    public function uploadFile(UploadedFile $file) {
+		/**
+		 * @param UploadedFile $file
+		 * @return string
+		 */
+		public function uploadFile(UploadedFile $file) {
 
       $fileNameOld = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
@@ -26,7 +30,10 @@
       return $fileName;
     }
 
-    public function getTargetDirectory() {
+		/**
+		 * @return string
+		 */
+		public function getTargetDirectory() {
       return $this->targetDirectory;
     }
   }

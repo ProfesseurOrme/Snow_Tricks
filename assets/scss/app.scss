@@ -128,6 +128,11 @@ h2, h3, h4, h5, h6 {
 .section {
   padding: 25px 0;
 }
+.homepage {
+  .container-fluid {
+    padding-bottom: 60px;
+  }
+}
 .brand {
   h5 {
     padding: 0 0 20px 0;
@@ -223,7 +228,7 @@ hr:not(.line-comment) {
 }
 
 .row-more {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 test {

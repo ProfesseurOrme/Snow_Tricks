@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Translation\Translator;
 
 /**
  * @Route("", name="home")
@@ -22,7 +21,7 @@ class HomeController extends AbstractController
 	 * @param PaginatorInterface $paginator
 	 * @return Response
 	 */
-    public function index(TrickRepository $trickRepository, PaginatorInterface $paginator, Request $request)
+    public function index(TrickRepository $trickRepository, PaginatorInterface $paginator)
     {
       $tricks = $trickRepository->findAll();
 
@@ -31,17 +30,6 @@ class HomeController extends AbstractController
 				1,
 				8
 			);
-
-			$category = [
-				'Grab',
-				'Rotation',
-				'Goofy',
-				'Loop',
-				'Lose'
-			];
-
-			$key = array_rand($category,1);
-			dump($category[$key]);
 
       return $this->render('home/index.html.twig', [
           'controller_name' => 'HomeController',
@@ -58,7 +46,8 @@ class HomeController extends AbstractController
 	 * @param $page
 	 * @return Response
 	 */
-    public function loadMoreTricks(TrickRepository $trickRepository, PaginatorInterface $paginator, Request $request, $page) {
+    public function loadMoreTricks(TrickRepository $trickRepository, PaginatorInterface $paginator, Request $request,
+			$page) {
 
 			if($request->isXmlHttpRequest()) {
 

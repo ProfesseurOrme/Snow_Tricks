@@ -12,7 +12,6 @@ use App\Repository\CommentRepository;
 use App\Services\UploadService;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -195,7 +194,6 @@ class TrickController extends AbstractController
 	/**
 	 * @Route("/{slug}/delete-comment-{id}", name="_comment_delete")
 	 * @param CommentRepository $commentRepository
-	 * @param Request $request
 	 * @param $slug
 	 * @param $id
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -223,7 +221,6 @@ class TrickController extends AbstractController
 	/**
 	 * @Route("/{slug}/delete-user-{id}", name="_user_delete")
 	 * @param User $user
-	 * @param Request $request
 	 * @param $slug
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */

@@ -57,13 +57,15 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-  /**
-   * @Route("registration", name="_registration")
-   * @param UserPasswordEncoderInterface $passwordEncoder
-   * @param GuardAuthenticatorHandler $guardHandler
-   * @param LoginFormAuthenticator $authenticator
-   * @return Response
-   */
+	/**
+	 * @Route("registration", name="_registration")
+	 * @param Request $request
+	 * @param UserPasswordEncoderInterface $passwordEncoder
+	 * @param GuardAuthenticatorHandler $guardHandler
+	 * @param LoginFormAuthenticator $authenticator
+	 * @return Response
+	 * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+	 */
   public function register(Request $request,UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler
 $guardHandler,
 		LoginFormAuthenticator $authenticator): Response
@@ -168,9 +170,13 @@ $guardHandler,
 			}
 		}
 
-    /**
-     * @Route("forgot-password", name="_forgot_password")
-     */
+	/**
+	 * @Route("forgot-password", name="_forgot_password")
+	 * @param Request $request
+	 * @param TokenGeneratorInterface $tokenGenerator
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+	 * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+	 */
     public function forgotPassword(Request $request, TokenGeneratorInterface $tokenGenerator) {
 
     	if($request->isMethod('POST')) {
@@ -217,6 +223,8 @@ $guardHandler,
 	/**
 	 * @Route("enable-this-user/{username}", name="_enable_user")
 	 * @param Request $request
+	 * @param $username
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
 		public function enableUser(Request $request, $username) {
 
