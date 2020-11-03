@@ -2,6 +2,8 @@
 
 Conception d'un site communautaire sur le Snowboard pour le besoin d'un projet pédagogique.
 
+Les diagrammes UML demandés `UML_Diagrammes.zip` se trouvent à la racine du projet.
+
 ## Environnement utilisé durant le développement
 * [Symfony 5.1.5](https://symfony.com/doc/current/setup.html) 
 * [Composer 1.8.6](https://getcomposer.org/doc/00-intro.md) 
@@ -72,7 +74,7 @@ Conception d'un site communautaire sur le Snowboard pour le besoin d'un projet p
     yarn encore production
 ```
 
-6- Si le fichier `.env` est correctement configuré, créez la base de données avec la commande ci-dessous, en vous plaçant dans le répertoire du projet :
+6- Si le fichier `.env` est correctement configuré, créez la base de données avec la commande ci-dessous :
 ```
     php bin/console doctrine:database:create
 ```
