@@ -2,12 +2,12 @@
 
 namespace App\Tests\UnitTests;
 
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class AppUnitTest extends TestCase
+class AppUnitTest extends WebTestCase
 {
-    public function testSomething()
+    public function testAsyncCallTrick()
     {
-        $this->assertTrue(true);
-    }
+				//$client = static::createClient();
+		}
 }

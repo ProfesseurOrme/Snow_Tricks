@@ -155,7 +155,7 @@
       </trans-unit>
       <trans-unit id="B5ebaMp" resname="This value is already used.">
         <source>This value is already used.</source>
-        <target>This value is already used.</target>
+        <target>This name is already used.</target>
       </trans-unit>
       <trans-unit id="L6097a6" resname="The size of the image could not be detected.">
         <source>The size of the image could not be detected.</source>

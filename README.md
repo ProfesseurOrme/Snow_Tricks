@@ -38,11 +38,6 @@ Les diagrammes UML demandés `UML_Diagrammes.zip` se trouvent à la racine du pr
     MAILER_DSN=gmail+smtp://mail.emailaddress:mail.password@default
 ```
 
-* Et votre adresse mail d'envoi : 
-```
-    MAIL_ADMIN=your.address@mail.com
-```
-
 * Si vous utilisez votre propre SMTP :
 ```
     MAILER_DSN=smtp://user:pass@smtp.example.com:port
@@ -51,7 +46,12 @@ Les diagrammes UML demandés `UML_Diagrammes.zip` se trouvent à la racine du pr
 * Ou si vous utiliser un SMTP tier comme celui utilisé dans le projet (Gmail), veuillez vous référer à cette
  [documentation](https://symfony.com/doc/current/mailer.html#using-a-3rd-party-transport).
 
-4- Téléchargez et installez les dépendances front-end du projet avec : 
+4- votre adresse mail d'envoi dans le fichier `.env` : 
+```
+    MAIL_ADMIN=your.address@mail.com
+```
+
+5- Téléchargez et installez les dépendances front-end du projet avec : 
 
 * [Npm](https://www.npmjs.com/get-npm)  :
 ```
@@ -63,7 +63,7 @@ Les diagrammes UML demandés `UML_Diagrammes.zip` se trouvent à la racine du pr
     yarn install
 ```
 
-5- Créer un build d'assets (grâce à Webpack Encore) : 
+6- Créer un build d'assets (grâce à Webpack Encore) : 
 
 * avec [Npm](https://www.npmjs.com/get-npm) :
 ```
@@ -74,17 +74,18 @@ Les diagrammes UML demandés `UML_Diagrammes.zip` se trouvent à la racine du pr
     yarn encore production
 ```
 
-6- Si le fichier `.env` est correctement configuré, créez la base de données avec la commande ci-dessous :
+7- Si le fichier `.env` est correctement configuré, créez la base de données avec la commande ci-dessous :
 ```
     php bin/console doctrine:database:create
 ```
-7- Créez les différentes tables de la base de données :
+8- Créez les différentes tables de la base de données :
 ```
     php bin/console doctrine:migrations:migrate
 ```
-8- Installer des données fictives avec des fixtures pour agrémenter le site :
+9- Installer des données fictives avec des fixtures pour agrémenter le site :
 ```
     php bin/console doctrine:fixtures:load
 ```
-9- Votre projet est prêt à l'utilisation ! Pour utiliser l'application, veuillez vous renseigner sur cette
+10- Votre projet est prêt à l'utilisation ! Pour utiliser l'application dans un environnement local, veuillez vous
+ renseigner sur cette
  [documentation](https://symfony.com/doc/current/setup.html#running-symfony-applications).
