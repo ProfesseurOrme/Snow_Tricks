@@ -4,6 +4,8 @@ Conception d'un site communautaire sur le Snowboard pour le besoin d'un projet p
 
 Les diagrammes UML demandés `UML_Diagrammes.zip` se trouvent à la racine du projet.
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c765c067cd1a4df7823062a519fe3e4e)](https://www.codacy.com/gh/ProfesseurOrme/Snow_Tricks/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProfesseurOrme/Snow_Tricks&amp;utm_campaign=Badge_Grade)
+
 ## Environnement utilisé durant le développement
 * [Symfony 5.1.5](https://symfony.com/doc/current/setup.html) 
 * [Composer 1.8.6](https://getcomposer.org/doc/00-intro.md) 
