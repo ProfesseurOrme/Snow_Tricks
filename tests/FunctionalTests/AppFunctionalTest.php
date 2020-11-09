@@ -29,7 +29,7 @@ class AppFunctionalTest extends WebTestCase
 		$form['registration_form[email]'] = 'testaccount@mail.com';
 		$form['registration_form[plainPassword]'] = 'testpassword123';
 
-		$crawler = $client->submit($form);
+		$client->submit($form);
 
 		$crawler = $client->followRedirect();
 
