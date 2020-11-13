@@ -514,6 +514,14 @@
         <source>User_Reset_Account_Valid</source>
         <target>Your password has been edited</target>
       </trans-unit>
+      <trans-unit id="1AmwKu_" resname="LogIn_Forgot_Password_Title">
+        <source>LogIn_Forgot_Password_Title</source>
+        <target>Forgot password</target>
+      </trans-unit>
+      <trans-unit id="zgAsJFO" resname="LogIn_Forgot_Password">
+        <source>LogIn_Forgot_Password</source>
+        <target>Forgot password</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

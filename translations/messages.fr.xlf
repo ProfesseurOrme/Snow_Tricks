@@ -473,7 +473,7 @@
       </trans-unit>
       <trans-unit id="sFCUcKp" resname="User_Not_Verfied_Message">
         <source>User_Not_Verfied_Message</source>
-        <target>Vous n'avez pas vérifier votre compte, veuillez vérifier vos mails</target>
+        <target>Vous n'avez pas vérifié votre compte. Veuillez regarder vos mails</target>
       </trans-unit>
       <trans-unit id=".4CnEaz" resname="Mail_Reset_Subtitle">
         <source>Mail_Reset_Subtitle</source>
@@ -518,6 +518,14 @@
       <trans-unit id="G22NcQt" resname="User_Reset_Account_Valid">
         <source>User_Reset_Account_Valid</source>
         <target>Votre mot de passe a bien été modifié</target>
+      </trans-unit>
+      <trans-unit id="1AmwKu_" resname="LogIn_Forgot_Password_Title">
+        <source>LogIn_Forgot_Password_Title</source>
+        <target>Mot de passe oublié</target>
+      </trans-unit>
+      <trans-unit id="zgAsJFO" resname="LogIn_Forgot_Password">
+        <source>LogIn_Forgot_Password</source>
+        <target>Mot de passe oublié</target>
       </trans-unit>
     </body>
   </file>
