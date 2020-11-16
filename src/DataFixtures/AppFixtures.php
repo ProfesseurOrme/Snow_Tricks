@@ -16,7 +16,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AppFixtures extends Fixture
 {
 		private $pictures = [
-			'13669-5f5619e338e65.jpeg',
+			'snowboard-backgrounds-unique-snowboarding-wallpaper-hd-c2b7e291a0-wallpapertag-for-you-of-snowboard-backgrounds.jpg',
+			'Winter-sports-snowboard_1920x1080.jpg',
 			'225771-5f56196dc2882.jpeg',
 			'flip-flip-939878-5f56196dc2f32.jpeg',
 			'front-flip-deux-5f56196dc3803.jpeg'
@@ -26,7 +27,9 @@ class AppFixtures extends Fixture
 			'https://www.youtube.com/watch?v=xhvqu2XBvI0',
 			'https://www.youtube.com/watch?v=gMfmjr-kuOg',
 			'https://www.youtube.com/watch?v=C-y70ZOSzE0',
-			'https://www.youtube.com/watch?v=M_BOfGX0aGs'
+			'https://www.youtube.com/watch?v=M_BOfGX0aGs',
+			'https://www.dailymotion.com/embed/video/x2fs4j4',
+			'https://www.dailymotion.com/embed/video/x2fu5fo'
 		];
 
 		private $category = [
@@ -50,10 +53,10 @@ class AppFixtures extends Fixture
 
 				$user = new User();
 
-				$plainPassword = ['adminSnowtricks','michelTest11'];
+				$plainPassword = 'snowtricksAdmin';
 
-				$user->setUsername('AdminSnowtricks')
-					->setPassword($this->encoder->encodePassword($user,$plainPassword[0]))
+				$user->setUsername('admin')
+					->setPassword($this->encoder->encodePassword($user,$plainPassword))
 					->setEmail($faker->email)
 					->setRoles(['ROLE_ADMIN'])
 					->setIsVerified('true')

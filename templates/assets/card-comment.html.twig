@@ -14,7 +14,7 @@
 						<hr>
 						<div class="d-flex">
 							<div class="p-2"><a class="modal-delete-comment" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_comment_delete', {'id' : trick.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ trick.name }}"><span data-toggle="tooltip" title="{{ 'Delete_Comment_Icon'|trans }}" data-placement="top" class="material-icons">delete</span></a></div>
-							{% if is_granted('ROLE_ADMIN') %}
+							{% if is_granted('ROLE_ADMIN') and app.user.username != trick.user.username %}
 								<div class="p-2"><a class="modal-delete-user" data-placement="top" data-toggle="modal" data-target="#deleteModal" data-path="{{ path('trick_user_delete', {'id' : trick.id ,'slug' : trick.slug}) }}" data-deleted-elt="{{ comment.user.username }}"><span data-toggle="tooltip" title="{{ 'Moderate_User_Icon'|trans }}" data-placement="top" class="material-icons">close</span></a></div>
 							{% endif %}
 						</div>

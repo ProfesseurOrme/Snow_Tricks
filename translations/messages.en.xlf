@@ -320,7 +320,8 @@
       </trans-unit>
       <trans-unit id="Kmmwuo_" resname="Modal_Delete_User_Confirmation">
         <source>Modal_Delete_User_Confirmation</source>
-        <target>Do you really want to delete this user</target>
+        <target>Do you really want to delete this user ? This action will erase all messages and all
+          figures created by it. Confirm</target>
       </trans-unit>
       <trans-unit id="YdGHIfs" resname="Modal_Delete_Comment_Confirmation">
         <source>Modal_Delete_Comment_Confirmation</source>

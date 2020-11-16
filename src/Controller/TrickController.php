@@ -211,6 +211,8 @@ class TrickController extends AbstractController
 						'info',
 						$this->translator->trans('Comment_Delete_Success')
 					);
+
+					return $this->redirectToRoute('home');
 				}
 			}
 			return $this->redirectToRoute('trick_detail', [
@@ -235,8 +237,6 @@ class TrickController extends AbstractController
 				$this->translator->trans('User_Delete_Success')
 			);
 		}
-		return $this->redirectToRoute('trick_detail', [
-			'slug' => $slug
-		]);
+		return $this->redirectToRoute('home');
 	}
 }

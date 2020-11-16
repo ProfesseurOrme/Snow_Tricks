@@ -54,7 +54,7 @@ class AppUnitTest extends TestCase
 			$this->assertEquals($category->getName(), $trick->getCategory()->getName());
 
 			foreach ($trick->getPictures() as $pictures) {
-				$this->assertEquals("flip-flip-939878-5f56196dc2f32.jpeg", $picture->getFileName());
+				$this->assertEquals("flip-flip-939878-5f56196dc2f32.jpeg", $pictures->getFileName());
 			}
 
 			foreach ($trick->getVideos() as $videos) {

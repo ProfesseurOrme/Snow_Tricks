@@ -40,12 +40,13 @@ class User implements UserInterface
     private $password;
 
     /**
+		 * @Assert\Email()
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user", cascade={"remove"})
      */
     private $comments;
 
@@ -55,7 +56,7 @@ class User implements UserInterface
     private $isVerified;
 
     /**
-     * @ORM\OneToMany(targetEntity=Trick::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Trick::class, mappedBy="user", cascade={"remove"})
      */
     private $tricks;
 

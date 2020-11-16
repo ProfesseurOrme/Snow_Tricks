@@ -11,9 +11,23 @@
                     <div class="card-body">
                         {{ form_start(registrationForm) }}
                             <h3>{{ 'SignUp_Title_Form'|trans }}</h3>
-                            {% for flashError in app.flashes('verify_email_error') %}
-                                <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-                            {% endfor %}
+                            {% if not registrationForm.vars.valid %}
+                                <div class="alert alert-danger">
+                                    <div class="container">
+                                        <div class="alert-icon">
+                                            <i class="material-icons">error_outline</i>
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                        </button>
+                                        {% for child in registrationForm.children %}
+                                            {% for error in child.vars.errors %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
                             <div class="form-group">
                                 <label for="{{ 'SignUp_Username_Label_For'|trans }}">{{ 'SignUp_Username_Label'|trans }} : </label>{{ form_widget(registrationForm.username, {'id' : 'input-username' ,'attr': {'class':'form-control', 'placeholder' : 'SignUp_Username_Placeholder','data-search' : path('app_search_user') }}) }}
                                 <small id="usernameHelp" class="form-text text-muted"></small>
