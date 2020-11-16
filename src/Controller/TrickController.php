@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Picture;
 use App\Entity\Trick;
 use App\Entity\User;
+use App\Entity\Video;
 use App\Form\CommentFormType;
 use App\Form\TrickFormType;
 use App\Repository\CommentRepository;
@@ -15,6 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -238,5 +240,17 @@ class TrickController extends AbstractController
 			);
 		}
 		return $this->redirectToRoute('home');
+	}
+
+	/**
+	 *@Route("/{slug}/delete-video-{id}", name="_video_delete")
+	 */
+	public function deleteVideo(Video $video, $slug) {
+		$this->manager->remove($video);
+		$this->manager->flush();
+
+		return $this->redirectToRoute('trick_detail',[
+			'slug' => $slug
+		]);
 	}
 }

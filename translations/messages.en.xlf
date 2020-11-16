@@ -523,6 +523,10 @@
         <source>LogIn_Forgot_Password</source>
         <target>Forgot password</target>
       </trans-unit>
+      <trans-unit id="XK9mpDJ" resname="Form_Delete_Video_Btn">
+        <source>Form_Delete_Video_Btn</source>
+        <target>Delete this video</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

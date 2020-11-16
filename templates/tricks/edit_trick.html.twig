@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">
-                <div class="brand">
+                <div class="brand text-center">
                     <h1>Snow Tricks</h1>
                     <h3>{{ 'Trick_Title_Description'|trans }}</h3>
                 </div>
@@ -48,7 +48,7 @@
             <div class="form-group form-file">
                 <label class="bmd-label-static" for="{{ 'Form_Label_For_Picture'|trans }}">{{
                     'Form_Label_Main_Picture'|trans }} : </label>
-                {{ form_widget(form.picture, {'attr' : {'class' : 'file-input-element'}}) }}
+                {{ form_widget(form.picture, {'attr' : {'class' : 'file-input-element' }}) }}
                 <button class="btn btn-dark-blue btn-round btn-sm">
                     {{ 'Form_Button_Add_Picture'|trans }}
                     <i class="material-icons">attach_file</i>
@@ -100,7 +100,12 @@
                     }} : </label>
                 <div class="add-video" data-prototype="{% apply escape %}{{ form_widget(form.videos.vars.prototype.embed, {'attr' : {'placeholder' : 'Form_Trick_Video', 'class' : 'form-control'}}) }}{% endapply %}">
                 {% for formVideo in form.videos %}
-                    <div class="add-video-block">
+                    <div class="add-video-block input-group">
+                        {% if trick.videos|length > 1 %}
+                            <span class="input-group-text">
+                                <a data-toggle="tooltip" data-placement="top" href="{{ path('trick_video_delete', {'slug' : trick.slug, 'id' : formVideo.vars.value.id}) }}" title="{{ 'Form_Delete_Video_Btn'|trans }}"><span class="material-icons">clear</span></a>
+                            </span>
+                        {% endif %}
                         {{ form_widget(formVideo.embed, {'attr' : {'placeholder' : 'Form_Trick_Video', 'class' : 'form-control'}}) }}
                     </div>
                 {% endfor %}
